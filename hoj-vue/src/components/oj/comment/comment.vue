@@ -228,7 +228,7 @@
         <div class="info-bottom">
           <Markdown
             class="content markdown-content"
-            :isAvoidXss="true" 
+            :isAvoidXss="true"
             :content="item.content">
           </Markdown>
           <div class="control">
@@ -321,7 +321,7 @@
               <div style="padding: 8px 0;margin-left: 34px;">
                 <Markdown
                   class="markdown-content"
-                  :isAvoidXss="true" 
+                  :isAvoidXss="true"
                   :content="reply.content">
                 </Markdown>
               </div>
@@ -544,7 +544,7 @@ export default {
       default: null,
     },
   },
-  components: { 
+  components: {
     Avatar,
     Markdown
   },
@@ -905,7 +905,7 @@ export default {
           tips = '\n```\ncode block\n```\n';
           break;
         case 2:
-          tips = '[HOJ](https://hcode.top)';
+          tips = '[](https://)';
           break;
         case 3:
           tips = '\n- ...';

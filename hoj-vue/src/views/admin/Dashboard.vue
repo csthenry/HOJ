@@ -297,7 +297,8 @@ export default {
         backupPercentCpuLoad: '0%',
         backupPercentMemoryLoad: '0%',
         backupService: [],
-        nacos: {},
+        nacos: {
+          status: 'Loading',},  // Nacos状态初始值
       },
       judgeInfo: [],
       session: {},
