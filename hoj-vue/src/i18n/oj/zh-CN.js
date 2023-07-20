@@ -24,7 +24,7 @@ export const m = {
   NavBar_Group: '团队',
   NavBar_About: '关于',
   NavBar_Introduction: '简介',
-  NavBar_Developer: '开发者',
+  NavBar_Developer: '开发',
   NavBar_Login: '登录',
   NavBar_Register: '注册',
   NavBar_UserHome: '我的首页',
@@ -164,24 +164,24 @@ export const m = {
   Difficulty_Statistics:'难度统计',
   Problems:'题',
   Calendar_Tooltip_Uint:'次提交',
-  Jan: '一月', 
-  Feb: '二月', 
-  Mar: '三月', 
-  Apr: '四月', 
+  Jan: '一月',
+  Feb: '二月',
+  Mar: '三月',
+  Apr: '四月',
   May: '五月',
-  Jun: '六月', 
+  Jun: '六月',
   Jul: '七月',
-  Aug: '八月', 
-  Sep: '九月', 
-  Oct: '十月', 
-  Nov: '十一月', 
+  Aug: '八月',
+  Sep: '九月',
+  Oct: '十月',
+  Nov: '十一月',
   Dec: '十二月',
-  Sun: '周日', 
-  Mon: '周一', 
-  Tue: '周二', 
-  Wed: '周三', 
-  Thu: '周四', 
-  Fri: '周五', 
+  Sun: '周日',
+  Mon: '周一',
+  Tue: '周二',
+  Wed: '周三',
+  Thu: '周四',
+  Fri: '周五',
   Sat: '周六',
   Less:'较少',
   More:'较多',
@@ -637,7 +637,7 @@ export const m = {
   Training_Total_Problems: '总题数',
   Record_List: '记录榜单',
   To_Enter_Training_Need_Password: '请输入该私有训练的密码，方可进入',
-  Enter_the_training_password: '请输入私有训练的密码',  
+  Enter_the_training_password: '请输入私有训练的密码',
   Register_training_successfully: '验证训练密码成功！',
 
   // /views/oj/training/TrainingRank.vue
@@ -688,7 +688,7 @@ export const m = {
   Disband_Group:'解散团队',
   Disband_Group_Tips:'您是否确定要解散该团队？',
   Disband_Successfully:'解散成功',
-  
+
   Group_Number: '团队编号',
   Group_Home: '主页',
   Group_Problem: '题目',
@@ -712,7 +712,7 @@ export const m = {
   Cancel_Admin:'取消管理',
   Back_To_Problem_List:'返回题目列表',
   Back_To_Admin_Problem_List:'返回题目管理列表',
-  
+
   // /views/oj/group/GroupMemberList.vue
   Applying: '申请中',
   Refused: '已拒绝',
@@ -731,7 +731,7 @@ export const m = {
   Back_To_Admin_Training_List:'返回训练管理列表',
   Back_To_Training_List:'返回训练列表',
   Back_Admin_Training_Problem_List:'返回训练题目管理列表',
-  
+
   // /views/oj/group/GroupContestList.vue
   Back_To_Admin_Contest_List:'返回比赛管理列表',
   Back_To_Contest_List:'返回比赛列表',
@@ -739,7 +739,7 @@ export const m = {
 
   // /views/oj/group/GroupSetting.vue
   Add_From_Group_Problem: '从团队题库添加题目',
-  
+
   // /views/oj/group/GroupSetting.vue
   Group_Visible: '在团队列表显示',
   Group_Not_Visible: '在团队列表隐藏',

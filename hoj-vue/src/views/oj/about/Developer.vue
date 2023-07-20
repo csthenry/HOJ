@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="intr-center">
+    <!-- <div class="intr-center">
       <paper-card type="server">
         <h1 class="text-darken">HOJ</h1>
         <h1>
@@ -24,7 +24,7 @@
           <i class="el-icon-circle-check"></i> {{ $t('m.Open_Source') }}
         </p>
       </paper-card>
-    </div>
+    </div> -->
     <el-row :gutter="20">
       <el-col :xs="24" :md="12">
         <paper-card type="server">

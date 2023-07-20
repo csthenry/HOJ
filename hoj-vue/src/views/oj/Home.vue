@@ -5,7 +5,7 @@
         :md="15"
         :sm="24"
       >
-        <el-card>
+        <!-- <el-card>
           <div
             slot="header"
             class="content-center"
@@ -37,8 +37,8 @@
               </el-image>
             </el-carousel-item>
           </el-carousel>
-        </el-card>
-        <Announcements class="card-top"></Announcements>
+        </el-card> -->
+        <Announcements></Announcements>
         <SubmissionStatistic class="card-top"></SubmissionStatistic>
         <el-card class="card-top">
           <div
@@ -392,12 +392,12 @@ export default {
         recentContests: false,
       },
       carouselImgList: [
-        {
-          url: "https://s1.ax1x.com/2022/05/15/ORSjyT.jpg",
-        },
-        {
-          url: "https://s1.ax1x.com/2022/05/15/ORp86f.jpg",
-        },
+        // {
+        //   url: "https://s1.ax1x.com/2022/05/15/ORSjyT.jpg",
+        // },
+        // {
+        //   url: "https://s1.ax1x.com/2022/05/15/ORp86f.jpg",
+        // },
       ],
       srcHight: "440px",
       remoteJudgeList: [
@@ -449,7 +449,7 @@ export default {
     }
     this.CONTEST_STATUS_REVERSE = Object.assign({}, CONTEST_STATUS_REVERSE);
     this.CONTEST_TYPE_REVERSE = Object.assign({}, CONTEST_TYPE_REVERSE);
-    this.getHomeCarousel();
+    // this.getHomeCarousel();
     this.getRecentContests();
     this.getRecent7ACRank();
     this.getRecentUpdatedProblemList();
