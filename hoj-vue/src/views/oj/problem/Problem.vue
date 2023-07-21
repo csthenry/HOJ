@@ -1347,13 +1347,9 @@ export default {
           }
           // try to load problem template
           if (codeTemplate && codeTemplate[this.language]) {
-            this.enableCodeTemplate = true;
-            this.templatePrefix = String(codeTemplate[this.language]).replace(reg, "$1");
-            this.templateSuffix = String(codeTemplate[this.language]).replace(reg, "$3");
             let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
             this.code = codeTemplateSlice;
           } else {
-            this.enableCodeTemplate = false;
             this.templatePrefix = "";
             this.templateSuffix = "";
         }
