@@ -1327,10 +1327,16 @@ export default {
           this.isRemote = result.problem.isRemote;
           this.changePie(result.problemCount);
 
-          // 在beforeRouteEnter中修改了, 说明本地有code，无需加载template
+          // 在beforeRouteEnter中修改了, 说明本地有code，无需加载template，但要记录当前语言模板信息，供提交使用
+          let codeTemplate = this.problemData.codeTemplate;
+          let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
+          this.enableCodeTemplate = Boolean(codeTemplate[this.language]);
+          this.templatePrefix = String(codeTemplate[this.language]).replace(reg, "$1");
+          this.templateSuffix = String(codeTemplate[this.language]).replace(reg, "$3");
           if (this.code !== "") {
             return;
           }
+
           if (this.problemData.languages.length != 0) {
             if (
               !this.language ||
@@ -1340,10 +1346,8 @@ export default {
             }
           }
           // try to load problem template
-          let codeTemplate = this.problemData.codeTemplate;
           if (codeTemplate && codeTemplate[this.language]) {
             this.enableCodeTemplate = true;
-            let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
             this.templatePrefix = String(codeTemplate[this.language]).replace(reg, "$1");
             this.templateSuffix = String(codeTemplate[this.language]).replace(reg, "$3");
             let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
@@ -1455,20 +1459,19 @@ export default {
       let codeTemplate = this.problemData.codeTemplate;
       let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
       let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
-      this.enableCodeTemplate = Boolean(codeTemplate[this.language]);
+
+      //记录切换后语言是否有模板，并记录模板前缀和后缀
+      this.enableCodeTemplate = Boolean(codeTemplate[newLang]);
+      this.templatePrefix = String(codeTemplate[newLang]).replace(reg, "$1");
+      this.templateSuffix = String(codeTemplate[newLang]).replace(reg, "$3");
+
       if (this.code == codeTemplateSlice || this.code == "") {
         //原语言模板未变化(即暂未答题)时，才切换模板，避免答题代码丢失
         if (codeTemplate[newLang]) {
           //正则处理代码模板
-          this.enableCodeTemplate = true;
-          this.templatePrefix = String(codeTemplate[newLang]).replace(reg, "$1");
-          this.templateSuffix = String(codeTemplate[newLang]).replace(reg, "$3");
           codeTemplateSlice = String(codeTemplate[newLang]).replace(reg, "$2");
           this.code = codeTemplateSlice;
         } else {
-          this.enableCodeTemplate = false;
-          this.templatePrefix = "";
-          this.templateSuffix = "";
           this.code = "";
         }
       }
@@ -1710,7 +1713,6 @@ export default {
         submitFunc(data, true);
       }
     },
-
     reSubmit(submitId) {
       this.result = { status: 9 };
       this.submitting = true;
@@ -1726,7 +1728,29 @@ export default {
         }
       );
     },
-
+    submissionRoute() {
+      if (this.contestID) {
+        // 比赛提交详情
+        this.$router.push({
+          name: "ContestSubmissionDetails",
+          params: {
+            contestID: this.contestID,
+            problemID: this.problemID,
+            submitID: this.submissionId,
+          },
+        });
+      } else if (this.groupID) {
+        this.$router.push({
+          name: "GroupSubmissionDetails",
+          params: { submitID: this.submissionId, gid: this.groupID },
+        });
+      } else {
+        this.$router.push({
+          name: "SubmissionDetails",
+          params: { submitID: this.submissionId },
+        });
+      }
+    },
     showExtraFileContent(name, content) {
       this.fileName = name;
       this.fileContent = content;
@@ -1737,7 +1761,6 @@ export default {
     downloadExtraFile() {
       utils.downloadFileByText(this.fileName, this.fileContent);
     },
-
     getLevelColor(difficulty) {
       return utils.getLevelColor(difficulty);
     },
@@ -1817,29 +1840,6 @@ export default {
         text: JUDGE_STATUS[this.result.status]["name"],
         color: JUDGE_STATUS[this.result.status]["rgb"],
       };
-    },
-    submissionRoute() {
-      if (this.contestID) {
-        // 比赛提交详情
-        this.$router.push({
-          name: "ContestSubmissionDetails",
-          params: {
-            contestID: this.contestID,
-            problemID: this.problemID,
-            submitID: this.submissionId,
-          },
-        });
-      } else if (this.groupID) {
-        this.$router.push({
-          name: "GroupSubmissionDetails",
-          params: { submitID: this.submissionId, gid: this.groupID },
-        });
-      } else {
-        this.$router.push({
-          name: "SubmissionDetails",
-          params: { submitID: this.submissionId },
-        });
-      }
     },
     isCFProblem() {
       if (
