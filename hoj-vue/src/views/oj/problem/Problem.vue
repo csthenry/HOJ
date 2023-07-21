@@ -2,7 +2,7 @@
   <div :class="bodyClass">
     <div id="problem-main">
       <!--problem main-->
-      <el-row class="problem-box" 
+      <el-row class="problem-box"
         :id="'problem-box' + '-' + $route.name">
         <el-col
           :sm="24"
@@ -111,7 +111,7 @@
                       }}</el-tag>
                     </span>
                   </div>
-                  
+
                   <div class="problem-menu">
                     <span v-if="isShowProblemDiscussion">
                       <el-link
@@ -209,27 +209,27 @@
                 <div id="problem-content">
                   <template v-if="problemData.problem.description">
                     <p class="title">{{ $t('m.Description') }}</p>
-                    <Markdown 
+                    <Markdown
                       class="md-content"
-                      :isAvoidXss="problemData.problem.gid != null" 
+                      :isAvoidXss="problemData.problem.gid != null"
                       :content="problemData.problem.description">
                     </Markdown>
                   </template>
 
                   <template v-if="problemData.problem.input">
                     <p class="title">{{ $t('m.Input') }}</p>
-                    <Markdown 
+                    <Markdown
                       class="md-content"
-                      :isAvoidXss="problemData.problem.gid != null" 
+                      :isAvoidXss="problemData.problem.gid != null"
                       :content="problemData.problem.input">
                     </Markdown>
                   </template>
 
                   <template v-if="problemData.problem.output">
                     <p class="title">{{ $t('m.Output') }}</p>
-                    <Markdown 
+                    <Markdown
                       class="md-content"
-                      :isAvoidXss="problemData.problem.gid != null" 
+                      :isAvoidXss="problemData.problem.gid != null"
                       :content="problemData.problem.output">
                     </Markdown>
                   </template>
@@ -275,9 +275,9 @@
                   <template v-if="problemData.problem.hint">
                     <p class="title">{{ $t('m.Hint') }}</p>
                     <el-card dis-hover>
-                      <Markdown 
+                      <Markdown
                       class="hint-content"
-                      :isAvoidXss="problemData.problem.gid != null" 
+                      :isAvoidXss="problemData.problem.gid != null"
                       :content="problemData.problem.hint">
                     </Markdown>
                     </el-card>
@@ -557,6 +557,9 @@
           >
             <CodeMirror
               :value.sync="code"
+              :enableCodeTemplate.sync="enableCodeTemplate"
+              :templatePrefix.sync="templatePrefix"
+              :templateSuffix.sync="templateSuffix"
               :languages="problemData.languages"
               :language.sync="language"
               :theme.sync="theme"
@@ -637,9 +640,9 @@
                           :color="submissionStatus.color"
                           @click.native="submissionRoute"
                         >
-                          <template v-if="this.result.status == JUDGE_STATUS_RESERVE['Pending'] 
-                          || this.result.status == JUDGE_STATUS_RESERVE['Compiling'] 
-                          || this.result.status == JUDGE_STATUS_RESERVE['Judging'] 
+                          <template v-if="this.result.status == JUDGE_STATUS_RESERVE['Pending']
+                          || this.result.status == JUDGE_STATUS_RESERVE['Compiling']
+                          || this.result.status == JUDGE_STATUS_RESERVE['Judging']
                           || this.result.status == JUDGE_STATUS_RESERVE['Submitting']">
                             <i class="el-icon-loading"></i> {{ submissionStatus.text }}
                           </template>
@@ -777,7 +780,7 @@
     </div>
     <ProblemHorizontalMenu
       v-if="showProblemHorizontalMenu"
-      :pid.sync="problemData.problem.id" 
+      :pid.sync="problemData.problem.id"
       :cid="contestID"
       :tid="trainingID"
       ref="problemHorizontalMenu"
@@ -879,6 +882,9 @@ export default {
       trainingID: null,
       submitting: false,
       code: "",
+      templatePrefix: "",
+      templateSuffix: "",
+      enableCodeTemplate: false,  //是否使用代码模板
       language: "",
       isRemote: false,
       theme: "solarized",
@@ -1100,7 +1106,7 @@ export default {
           }
           if (moveLen > maxT - 580) moveLen = maxT - 580; //右边区域最小宽度为580px
           let leftRadio = (moveLen / box.offsetWidth) *100;
-          resize.style.left = leftRadio + "%"; 
+          resize.style.left = leftRadio + "%";
           left.style.width = leftRadio + "%"; // 设置左侧区域的宽度
           right.style.width = (100 - leftRadio) + "%";
           if (leftRadio < 100) {
@@ -1251,7 +1257,7 @@ export default {
           .getElementById("js-center" + "-" + this.$route.name)
           .setAttribute(
             "style",
-            "top:" + problemLeftHight * 0.5 + "px !important; left:" 
+            "top:" + problemLeftHight * 0.5 + "px !important; left:"
             + left.style.width
           );
       } catch (e) {
@@ -1336,8 +1342,17 @@ export default {
           // try to load problem template
           let codeTemplate = this.problemData.codeTemplate;
           if (codeTemplate && codeTemplate[this.language]) {
-            this.code = codeTemplate[this.language];
-          }
+            this.enableCodeTemplate = true;
+            let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
+            this.templatePrefix = String(codeTemplate[this.language]).replace(reg, "$1");
+            this.templateSuffix = String(codeTemplate[this.language]).replace(reg, "$3");
+            let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
+            this.code = codeTemplateSlice;
+          } else {
+            this.enableCodeTemplate = false;
+            this.templatePrefix = "";
+            this.templateSuffix = "";
+        }
           this.$nextTick((_) => {
             addCodeBtn();
           });
@@ -1347,7 +1362,7 @@ export default {
           this.loading = false;
         }
       );
-      
+
       if(this.activeName == "mySubmission"){
         this.getMySubmission();
       }
@@ -1437,11 +1452,23 @@ export default {
     },
 
     onChangeLang(newLang) {
-      if (this.code == this.problemData.codeTemplate[this.language]) {
-        //原语言模板未变化，只改变语言
-        if (this.problemData.codeTemplate[newLang]) {
-          this.code = this.problemData.codeTemplate[newLang];
+      let codeTemplate = this.problemData.codeTemplate;
+      let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
+      let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
+      this.enableCodeTemplate = Boolean(codeTemplate[this.language]);
+      if (this.code == codeTemplateSlice || this.code == "") {
+        //原语言模板未变化(即暂未答题)时，才切换模板，避免答题代码丢失
+        if (codeTemplate[newLang]) {
+          //正则处理代码模板
+          this.enableCodeTemplate = true;
+          this.templatePrefix = String(codeTemplate[newLang]).replace(reg, "$1");
+          this.templateSuffix = String(codeTemplate[newLang]).replace(reg, "$3");
+          codeTemplateSlice = String(codeTemplate[newLang]).replace(reg, "$2");
+          this.code = codeTemplateSlice;
         } else {
+          this.enableCodeTemplate = false;
+          this.templatePrefix = "";
+          this.templateSuffix = "";
           this.code = "";
         }
       }
@@ -1463,8 +1490,17 @@ export default {
         .then(() => {
           let codeTemplate = this.problemData.codeTemplate;
           if (codeTemplate && codeTemplate[this.language]) {
-            this.code = codeTemplate[this.language];
+            //正则处理代码模板
+            this.enableCodeTemplate = true;
+            let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
+            this.templatePrefix = String(codeTemplate[this.language]).replace(reg, "$1");
+            this.templateSuffix = String(codeTemplate[this.language]).replace(reg, "$3");
+            let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
+            this.code = codeTemplateSlice;
           } else {
+            this.enableCodeTemplate = false;
+            this.templatePrefix = "";
+            this.templateSuffix = "";
             this.code = "";
           }
         })
@@ -1590,10 +1626,15 @@ export default {
       this.submissionId = "";
       this.result = { status: 9 };
       this.submitting = true;
+      //拼接代码模板
+      let templateSubmitCode = this.code;
+      if(this.enableCodeTemplate){
+        templateSubmitCode = this.templatePrefix + this.code + this.templateSuffix;
+      }
       let data = {
         pid: this.problemID, // 如果是比赛题目就为display_id
         language: this.language,
-        code: this.code,
+        code: templateSubmitCode, // 若有模板，则需拼接代码模板
         cid: this.contestID,
         tid: this.trainingID,
         gid: this.groupID,

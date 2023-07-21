@@ -382,7 +382,7 @@
                       {{ testJudgeRes.stderr }}
                     </div>
                     <div
-                      v-if="testJudgeRes.problemJudgeMode == 'spj' 
+                      v-if="testJudgeRes.problemJudgeMode == 'spj'
                           && (testJudgeRes.status == 0 || testJudgeRes.status == -1)"
                       style="font-weight: 700;"
                     >
@@ -550,6 +550,18 @@ export default {
     value: {
       type: String,
       default: "",
+    },
+    templatePrefix: {
+      type: String,
+      default: "",
+    },
+    templateSuffix: {
+      type: String,
+      default: "",
+    },
+    enableCodeTemplate: {
+      type: Boolean,
+      default: false,
     },
     languages: {
       type: Array,
@@ -773,10 +785,15 @@ export default {
         myMessage.error(this.$i18n.t("m.Code_Length_can_not_exceed_65535"));
         return;
       }
+      //拼接代码模板
+      let templateSubmitCode = this.value;
+      if(this.enableCodeTemplate){
+        templateSubmitCode = this.templatePrefix + this.value + this.templateSuffix;
+      }
       let data = {
         pid: this.pid,
         language: this.language,
-        code: this.value,
+        code: templateSubmitCode,  // 若有模板，则需拼接代码模板
         type: this.type,
         userInput: this.userInput,
         expectedOutput: this.expectedOutput,

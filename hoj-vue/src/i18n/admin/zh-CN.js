@@ -57,8 +57,8 @@ export const m = {
   Mem_Usage: '内存使用率',
   Secure: '不稳定',
   Healthy_Status: '状态',
-  // Healthy: '健康',
-  // Unhealthy: '不健康',
+  Healthy: '正常',
+  Unhealthy: '异常',
   Judge_Server: '判题系统',
 
   // /views/admin/general/User.vue
