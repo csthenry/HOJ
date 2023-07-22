@@ -377,7 +377,7 @@ a:hover {
   margin: 10px 0;
 }
 .contest-rank-config{
-  text-align:right; 
+  text-align:right;
   margin-top: 15px;
 }
 .contest-scoreBoard-config{
@@ -391,7 +391,7 @@ a:hover {
 }
 @media screen and (max-width: 992px) {
   .contest-rank-config{
-    text-align:center; 
+    text-align:center;
     margin-bottom: 10px;
     margin-top: -1px;
   }
@@ -870,6 +870,7 @@ footer h1 {
   border: 0;
   background: #ffffff;
   padding: 15px;
+  box-sizing: border-box;
   margin: 5px 0;
   box-shadow: inset 0 0 12px rgb(219 219 219);
 }
