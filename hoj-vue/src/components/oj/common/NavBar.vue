@@ -190,7 +190,7 @@
               placement="bottom"
             >
               <span class="el-dropdown-link">
-                <i class="el-icon-bell"></i>
+                <i class="el-icon-message"></i>
                 <svg
                   v-if="
                     unreadMessage.comment > 0 ||
@@ -280,7 +280,7 @@
 
         <mu-menu slot="right" v-show="isAuthenticated" :open.sync="openmsgmenu">
           <mu-button flat>
-            <mu-icon value=":el-icon-bell" size="24"></mu-icon>
+            <mu-icon value=":el-icon-message" size="24"></mu-icon>
             <svg
               v-if="
                 unreadMessage.comment > 0 ||
