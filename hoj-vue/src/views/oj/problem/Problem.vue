@@ -1036,7 +1036,6 @@ export default {
           this.loadingTable = false;
         });
     },
-<<<<<<< HEAD
     getSplitCodeTemplate(lang) {
       let codeTemplateSlice = "";
       let codeTemplate = this.problemData.codeTemplate;
@@ -1054,8 +1053,6 @@ export default {
       }
       return codeTemplateSlice;
     },
-=======
->>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
     getStatusColor(status) {
       return "el-tag el-tag--medium status-" + JUDGE_STATUS[status].color;
     },

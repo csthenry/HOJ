@@ -461,11 +461,7 @@ export default {
     }
     this.CONTEST_STATUS_REVERSE = Object.assign({}, CONTEST_STATUS_REVERSE);
     this.CONTEST_TYPE_REVERSE = Object.assign({}, CONTEST_TYPE_REVERSE);
-<<<<<<< HEAD
     this.getHomeCarousel();
-=======
-    // this.getHomeCarousel();
->>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
     this.getRecentContests();
     this.getRecent7ACRank();
     this.getRecentUpdatedProblemList();
