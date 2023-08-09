@@ -887,8 +887,8 @@ export default {
       enableCodeTemplate: false,  //是否使用代码模板
       language: "",
       isRemote: false,
-      theme: "solarized",
-      fontSize: "14px",
+      theme: "material",
+      fontSize: "16px",
       tabSize: 4,
       height: 550,
       submissionId: "",
@@ -1037,8 +1037,8 @@ export default {
         });
     },
     getSplitCodeTemplate(lang) {
-      let codeTemplateSlice = "";
-      let codeTemplate = this.problemData.codeTemplate;
+      var codeTemplateSlice = "";
+      var codeTemplate = this.problemData.codeTemplate;
       if (codeTemplate && codeTemplate[lang]) {
         //正则处理代码模板
         this.enableCodeTemplate = true;

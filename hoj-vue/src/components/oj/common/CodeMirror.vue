@@ -626,7 +626,7 @@ export default {
         // codemirror options
         tabSize: this.tabSize,
         mode: "text/x-csrc",
-        theme: "solarized",
+        theme: "material",
         // 显示行号
         lineNumbers: true,
         line: true,
@@ -639,6 +639,8 @@ export default {
         showCursorWhenSelecting: true,
         highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
         // extraKeys: { Ctrl: 'autocomplete' }, //自定义快捷键
+        extraKeys: { Tab: this.newTab }, //自定义快捷键
+        // addKeyMap: { 'Ctrl-Shift-f': this.autoFormatSelection }, //格式化快捷键
         matchBrackets: true, //括号匹配
         indentUnit: this.tabSize, //一个块（编辑语言中的含义）应缩进多少个空格
         styleActiveLine: true,
@@ -707,8 +709,32 @@ export default {
     })
   },
   methods: {
+    //格式化代码
+    /*
+    autoFormatSelection() {
+      var range = this.getSelectedRange();
+      this.editor.autoFormatRange(range.from, range.to);
+      this.editor.commentRange(false, range.from, range.to);
+    },
+	  // 获取编辑器中选中范围的的行号
+    getSelectedRange() {
+      return {
+          from: this.editor.getCursor(true),
+          to: this.editor.getCursor(false)
+      }
+    },
+    */
     onEditorCodeChange(newCode) {
       this.$emit("update:value", newCode);
+    },
+    // 自定义tab键，一个tab等于indentUnit个空格
+    newTab() {
+      var cm = this.editor;
+      if (cm.somethingSelected()) {      // 存在文本选择
+	      cm.indentSelection('add');    // 正向缩进文本
+	    } else {                    // 无文本选择
+	      cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "), "end", "+input");  // 光标处插入 indentUnit 个空格
+	    }
     },
     onLangChange(newVal) {
       this.editor.setOption("mode", this.mode[newVal]);
