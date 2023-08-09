@@ -127,7 +127,7 @@ export const m = {
   The_new_email_cannot_be_empty: 'The new email is required.',
 
 
-  // /components/oj/setting/UserInfo.vue 
+  // /components/oj/setting/UserInfo.vue
   Avatar_Setting: 'Avatar Setting',
   UserInfo_Setting: 'User Info Setting',
   Upload_avatar_hint: 'Drag and drop the avatar here, or click here.',
@@ -165,24 +165,24 @@ export const m = {
   Difficulty_Statistics:'Difficulty Statistics',
   Problems:'Problems',
   Calendar_Tooltip_Uint:'submissions',
-  Jan: 'Jan', 
-  Feb: 'Feb', 
-  Mar: 'Mar', 
-  Apr: 'Apr', 
+  Jan: 'Jan',
+  Feb: 'Feb',
+  Mar: 'Mar',
+  Apr: 'Apr',
   May: 'May',
-  Jun: 'Jun', 
+  Jun: 'Jun',
   Jul: 'Jul',
-  Aug: 'Aug', 
-  Sep: 'Sep', 
-  Oct: 'Oct', 
-  Nov: 'Nov', 
+  Aug: 'Aug',
+  Sep: 'Sep',
+  Oct: 'Oct',
+  Nov: 'Nov',
   Dec: 'Dec',
-  Sun: 'Sun', 
-  Mon: 'Mon', 
-  Tue: 'Tue', 
-  Wed: 'Wed', 
-  Thu: 'Thu', 
-  Fri: 'Fri', 
+  Sun: 'Sun',
+  Mon: 'Mon',
+  Tue: 'Tue',
+  Wed: 'Wed',
+  Thu: 'Thu',
+  Fri: 'Fri',
   Sat: 'Sat',
   Less:'Less',
   More:'More',
@@ -238,7 +238,7 @@ export const m = {
   Pick_a_random_question: 'Pick a random question',
   Touch_Get_Status: 'Please touch or hover the mouse to the designated problem line to view the submission status',
   Good_luck_to_you: 'Good luck to you!',
-  
+
   // /views/oj/problem/Problem.vue
   Problem_Description: 'Problem Description',
   My_Submission: 'My Submission',
@@ -385,7 +385,7 @@ export const m = {
   Liked: 'Liked',
   Report_Reason: 'Report Reason',
   The_report_label_and_reason_cannot_be_empty: 'The report label and reason cannot be empty.',
-  
+
   // 404.vue
   Page_Not_Found:"Sorry, the page can't be found",
   Go_Home: 'Go Home',
@@ -520,6 +520,7 @@ export const m = {
   // /views/oj/about/Developer.vue
   Leader_BackEnd_FrontEnd_Engineer: 'Leader & BackEnd | FrontEnd Engineer',
   Group_Function_Development_Contributor: 'Group Function Development Contributor',
+  SecondaryDev_Development_Contributor: 'Secondary Development | Development Contributor',
   Distributed: 'Distributed',
   Distributed_Desc: 'It is divided into frontend and backend separation, and supports the micro service cluster',
   Customization: 'Customization',
@@ -710,7 +711,7 @@ export const m = {
   Back_To_Admin_Contest_List:'Back to Admin Contest List',
   Back_To_Contest_List:'Back to Contest List',
   Back_Admin_Contest_Problem_List:'Back to Admin Contest Problem List',
-  
+
   // /views/oj/group/GroupDiscussionList.vue
   No_Discussion: 'No Discussion',
   Problem_Discussion:'Problem Discussion',
