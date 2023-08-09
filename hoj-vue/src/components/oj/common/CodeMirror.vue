@@ -538,7 +538,7 @@ import "codemirror/addon/fold/indent-fold.js";
 import "codemirror/addon/hint/show-hint.css";
 import "codemirror/addon/hint/show-hint.js";
 import "codemirror/addon/hint/anyword-hint.js";
-import 'codemirror/addon/hint/javascript-hint'
+import "codemirror/addon/hint/javascript-hint.js";
 import "codemirror/addon/selection/mark-selection.js";
 
 export default {
