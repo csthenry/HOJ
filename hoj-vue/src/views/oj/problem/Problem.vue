@@ -1036,6 +1036,23 @@ export default {
           this.loadingTable = false;
         });
     },
+    getSplitCodeTemplate(lang) {
+      let codeTemplateSlice = "";
+      let codeTemplate = this.problemData.codeTemplate;
+      if (codeTemplate && codeTemplate[lang]) {
+        //正则处理代码模板
+        this.enableCodeTemplate = true;
+        let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
+        this.templatePrefix = String(codeTemplate[lang]).replace(reg, "$1");
+        this.templateSuffix = String(codeTemplate[lang]).replace(reg, "$3");
+        codeTemplateSlice = String(codeTemplate[lang]).replace(reg, "$2");
+      } else {
+        this.enableCodeTemplate = false;
+        this.templatePrefix = "";
+        this.templateSuffix = "";
+      }
+      return codeTemplateSlice;
+    },
     getStatusColor(status) {
       return "el-tag el-tag--medium status-" + JUDGE_STATUS[status].color;
     },
@@ -1328,11 +1345,15 @@ export default {
           this.changePie(result.problemCount);
 
           // 在beforeRouteEnter中修改了, 说明本地有code，无需加载template，但要记录当前语言模板信息，供提交使用
+<<<<<<< HEAD
+          let codeTemplateSlice = this.getSplitCodeTemplate(this.language)
+=======
           let codeTemplate = this.problemData.codeTemplate;
           let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
           this.enableCodeTemplate = Boolean(codeTemplate[this.language]);
           this.templatePrefix = String(codeTemplate[this.language]).replace(reg, "$1");
           this.templateSuffix = String(codeTemplate[this.language]).replace(reg, "$3");
+>>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
           if (this.code !== "") {
             return;
           }
@@ -1346,6 +1367,11 @@ export default {
             }
           }
           // try to load problem template
+<<<<<<< HEAD
+          if (this.enableCodeTemplate) {
+            this.code = codeTemplateSlice;
+          }
+=======
           if (codeTemplate && codeTemplate[this.language]) {
             let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
             this.code = codeTemplateSlice;
@@ -1353,6 +1379,7 @@ export default {
             this.templatePrefix = "";
             this.templateSuffix = "";
         }
+>>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
           this.$nextTick((_) => {
             addCodeBtn();
           });
@@ -1452,6 +1479,14 @@ export default {
     },
 
     onChangeLang(newLang) {
+<<<<<<< HEAD
+      let preCodeTemplateSlice = this.getSplitCodeTemplate(this.language); //之前的代码模板
+      let codeTemplateSlice = this.getSplitCodeTemplate(newLang); //newLang代码模板
+
+      if (this.code == preCodeTemplateSlice || this.code == "") {
+        //原语言模板未变化(即暂未答题)时，才切换模板，避免答题代码丢失
+        if (this.enableCodeTemplate) {
+=======
       let codeTemplate = this.problemData.codeTemplate;
       let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
       let codeTemplateSlice = String(codeTemplate[this.language]).replace(reg, "$2");
@@ -1466,6 +1501,7 @@ export default {
         if (codeTemplate[newLang]) {
           //正则处理代码模板
           codeTemplateSlice = String(codeTemplate[newLang]).replace(reg, "$2");
+>>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
           this.code = codeTemplateSlice;
         } else {
           this.code = "";
@@ -1487,6 +1523,12 @@ export default {
         }
       )
         .then(() => {
+<<<<<<< HEAD
+          let codeTemplateSlice = this.getSplitCodeTemplate(this.language);
+          if (this.enableCodeTemplate) {
+            this.code = codeTemplateSlice;
+          } else {
+=======
           let codeTemplate = this.problemData.codeTemplate;
           if (codeTemplate && codeTemplate[this.language]) {
             //正则处理代码模板
@@ -1500,6 +1542,7 @@ export default {
             this.enableCodeTemplate = false;
             this.templatePrefix = "";
             this.templateSuffix = "";
+>>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
             this.code = "";
           }
         })
