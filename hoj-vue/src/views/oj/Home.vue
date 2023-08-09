@@ -5,8 +5,12 @@
         :md="15"
         :sm="24"
       >
+<<<<<<< HEAD
       <!-- 有轮播图才显示该组件 -->
         <el-card v-if="carouselImgList.length > 0">
+=======
+        <!-- <el-card>
+>>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
           <div
             slot="header"
             class="content-center"
@@ -38,10 +42,15 @@
               </el-image>
             </el-carousel-item>
           </el-carousel>
+<<<<<<< HEAD
         </el-card>
         <Announcements v-if="carouselImgList.length > 0" class="card-top"></Announcements>
         <Announcements v-else></Announcements>
 
+=======
+        </el-card> -->
+        <Announcements></Announcements>
+>>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
         <SubmissionStatistic class="card-top"></SubmissionStatistic>
         <el-card class="card-top">
           <div
@@ -452,7 +461,11 @@ export default {
     }
     this.CONTEST_STATUS_REVERSE = Object.assign({}, CONTEST_STATUS_REVERSE);
     this.CONTEST_TYPE_REVERSE = Object.assign({}, CONTEST_TYPE_REVERSE);
+<<<<<<< HEAD
     this.getHomeCarousel();
+=======
+    // this.getHomeCarousel();
+>>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
     this.getRecentContests();
     this.getRecent7ACRank();
     this.getRecentUpdatedProblemList();
