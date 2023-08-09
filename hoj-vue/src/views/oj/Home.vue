@@ -38,15 +38,10 @@
               </el-image>
             </el-carousel-item>
           </el-carousel>
-<<<<<<< HEAD
         </el-card>
         <Announcements v-if="carouselImgList.length > 0" class="card-top"></Announcements>
         <Announcements v-else></Announcements>
 
-=======
-        </el-card> -->
-        <Announcements></Announcements>
->>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
         <SubmissionStatistic class="card-top"></SubmissionStatistic>
         <el-card class="card-top">
           <div
