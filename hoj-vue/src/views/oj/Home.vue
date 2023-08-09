@@ -5,12 +5,8 @@
         :md="15"
         :sm="24"
       >
-<<<<<<< HEAD
       <!-- 有轮播图才显示该组件 -->
         <el-card v-if="carouselImgList.length > 0">
-=======
-        <!-- <el-card>
->>>>>>> 243c3d507532e55757dcc47aa404fa456d5181b8
           <div
             slot="header"
             class="content-center"
