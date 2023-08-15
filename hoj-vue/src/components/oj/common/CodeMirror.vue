@@ -649,6 +649,7 @@ export default {
         hintOptions: {
           // 当匹配只有一项的时候是否自动补全
           completeSingle: false,
+          //hint: this.handleShowHint
         },
       },
       mode: {
@@ -709,21 +710,49 @@ export default {
     })
   },
   methods: {
-    //格式化代码
-    /*
-    autoFormatSelection() {
-      var range = this.getSelectedRange();
-      this.editor.autoFormatRange(range.from, range.to);
-      this.editor.commentRange(false, range.from, range.to);
+    // BEGIN模板级补全，开发中
+    handleShowHint(cmInstance, hintOptions) {
+    let cursor = cmInstance.getCursor();
+    let token = cmInstance.getTokenAt(cursor)
+    let found = [];
+    const currentStr = token.string;
+    if(currentStr.indexOf("#inc") != -1 ){
+      found = [{
+        text: "#include <iostream>\n#include <cstring>\n#include <algorithm>",
+        displayText: "#include",
+        displayInfo: "常用头文件",
+        render: this.hintRender
+        }, {
+        text: "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n\t\n\treturn 0;\n}",
+        displayText: "#include <bits/stdc++.h>",
+        displayInfo: "int main()模板",
+        render: this.hintRender
+        }
+      ];
+    }
+    return {
+      list: found,
+      from: {ch: token.start, line: cursor.line},
+      to: {ch: token.end, line: cursor.line}
+    }
     },
-	  // 获取编辑器中选中范围的的行号
-    getSelectedRange() {
-      return {
-          from: this.editor.getCursor(true),
-          to: this.editor.getCursor(false)
-      }
+    hintRender(element, self, data) {
+      let div = document.createElement("div");
+      div.setAttribute("class", "autocomplete-div");
+
+      let divText = document.createElement("div");
+      divText.setAttribute("class", "autocomplete-name");
+      divText.innerText = data.displayText;
+
+      let divInfo = document.createElement("div");
+      divInfo.setAttribute("class", "autocomplete-hint");
+      divInfo.innerText = data.displayInfo;
+
+      div.appendChild(divText);
+      div.appendChild(divInfo);
+      element.appendChild(div);
     },
-    */
+    // END模板级补全，开发中
     onEditorCodeChange(newCode) {
       this.$emit("update:value", newCode);
     },
@@ -1075,5 +1104,9 @@ export default {
 }
 .cm-s-material .cm-matchhighlight {
   background-color: rgba(128, 203, 196, 0.2);
+}
+.CodeMirror-hints {
+  font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+  font-size: 120%;
 }
 </style>
