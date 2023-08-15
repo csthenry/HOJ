@@ -36,7 +36,7 @@ export default {
         lineNumbers: true,
         lineWrapping: false,
         theme: 'solarized',
-        extraKeys: { Tab: this.newTab }, //自定义快捷键
+        extraKeys: { Tab: this.newTab, "Shift-Tab": this.newShiftTab }, //自定义快捷键
         tabSize: 4,
         line: true,
         foldGutter: true,
@@ -82,11 +82,15 @@ export default {
     newTab() {
       var cm = this.$refs.editor.editor;
       if (cm.somethingSelected()) {      // 存在文本选择
-	      cm.indentSelection('add');    // 正向缩进文本
-	    } else {                    // 无文本选择
+	      cm.indentSelection('add');       // 正向缩进文本
+	    } else {                           // 无文本选择
 	      cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "), "end", "+input");  // 光标处插入 indentUnit 个空格
 	    }
     },
+    newShiftTab() {
+      var cm = this.$refs.editor.editor;
+      cm.indentSelection('subtract');  // 反向缩进文本
+    }
   },
   watch: {
     value(val) {

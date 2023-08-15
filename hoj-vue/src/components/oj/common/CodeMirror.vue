@@ -639,7 +639,7 @@ export default {
         showCursorWhenSelecting: true,
         highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
         // extraKeys: { Ctrl: 'autocomplete' }, //自定义快捷键
-        extraKeys: { Tab: this.newTab }, //自定义快捷键
+        extraKeys: { Tab: this.newTab, "Shift-Tab": this.newShiftTab }, //自定义快捷键
         // addKeyMap: { 'Ctrl-Shift-f': this.autoFormatSelection }, //格式化快捷键
         matchBrackets: true, //括号匹配
         indentUnit: this.tabSize, //一个块（编辑语言中的含义）应缩进多少个空格
@@ -760,10 +760,14 @@ export default {
     newTab() {
       var cm = this.editor;
       if (cm.somethingSelected()) {      // 存在文本选择
-	      cm.indentSelection('add');    // 正向缩进文本
-	    } else {                    // 无文本选择
+	      cm.indentSelection('add');       // 正向缩进文本
+	    } else {                           // 无文本选择
 	      cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "), "end", "+input");  // 光标处插入 indentUnit 个空格
 	    }
+    },
+    newShiftTab() {
+      var cm = this.editor;
+      cm.indentSelection('subtract');  // 反向缩进文本
     },
     onLangChange(newVal) {
       this.editor.setOption("mode", this.mode[newVal]);
