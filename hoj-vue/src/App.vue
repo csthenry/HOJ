@@ -588,7 +588,7 @@ a:hover {
   white-space: pre-wrap;
   margin-top: 15px;
   margin-bottom: 15px;
-  background: #f8f8f9;
+  background: #fafafa;
   border: 1px dashed #e9eaec;
 }
 
@@ -763,7 +763,7 @@ footer h1 {
   position: relative !important;
   overflow-y: hidden !important;
   font-size: 1rem !important;
-  background: #f8f8f9 !important;
+  background: #fafafa !important;
   white-space: pre !important;
 }
 .markdown-body pre code {
