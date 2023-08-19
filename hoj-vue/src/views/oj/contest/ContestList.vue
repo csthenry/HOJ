@@ -307,8 +307,8 @@ export default {
       CONTEST_STATUS_REVERSE: {},
       CONTEST_STATUS: {},
       CONTEST_TYPE_REVERSE: {},
-      acmSrc: require('@/assets/acm.jpg'),
-      oiSrc: require('@/assets/oi.jpg'),
+      acmSrc: require('@/assets/acm.png'),
+      oiSrc: require('@/assets/oi.png'),
       loading: true,
     };
   },

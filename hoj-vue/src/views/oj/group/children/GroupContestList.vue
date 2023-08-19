@@ -400,8 +400,8 @@ export default {
       createProblemPage: false,
       announcementPage: false,
       contestId: null,
-      acmSrc: require('@/assets/acm.jpg'),
-      oiSrc: require('@/assets/oi.jpg'),
+      acmSrc: require('@/assets/acm.png'),
+      oiSrc: require('@/assets/oi.png'),
     };
   },
   mounted() {

@@ -93,6 +93,8 @@ export default {
     if (this.isAdminRole || this.isGroupAdmin) {
       this.toolbars.imagelink = true;
     }
+  },
+  mounted() {
     this.$nextTick((_) => {
           addCodeBtn();
         });
