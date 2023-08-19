@@ -553,7 +553,7 @@ export default {
   text-align: center;
 }
 #contest-list .trophy {
-  height: 70px;
+  /* height: 70px; */
   margin-left: 10px;
   margin-right: -20px;
 }

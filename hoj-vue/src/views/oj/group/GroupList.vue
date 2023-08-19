@@ -108,7 +108,7 @@
             <el-col :span="7" style="text-align: center;">
               <el-card
                 :body-style="{ padding: '0px' }"
-                style="border-radius: 10px; height: 170px"
+                style="height: 170px"
               >
                 <template v-if="group.avatar">
                   <el-image
@@ -138,7 +138,7 @@
             <el-col :span="17" :class="GROUP_TYPE_REVERSE[group.auth].name">
               <el-card
                 :body-style="{ padding: '0px' }"
-                style="border-radius: 10px; height: 170px"
+                style="height: 170px"
               >
                 <div slot="header" style="height: 24px">
                   <a class="group-name" @click="toGroup(group.id)">
