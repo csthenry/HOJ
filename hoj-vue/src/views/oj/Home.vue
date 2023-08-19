@@ -394,14 +394,7 @@ export default {
         recentUpdatedProblemsLoading: false,
         recentContests: false,
       },
-      carouselImgList: [
-        // {
-        //   url: "https://s1.ax1x.com/2022/05/15/ORSjyT.jpg",
-        // },
-        // {
-        //   url: "https://s1.ax1x.com/2022/05/15/ORp86f.jpg",
-        // },
-      ],
+      carouselImgList: [],
       srcHight: "440px",
       remoteJudgeList: [
         {

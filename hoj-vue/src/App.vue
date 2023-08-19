@@ -49,7 +49,7 @@
               <h1>{{ $t('m.Development') }}</h1>
               <p class="mb-1">
                 <a
-                  href="https://gitee.com/himitzh0730/hoj"
+                  href="https://github.com/csthenry/HOJ"
                   target="_blank"
                 >{{
                   $t('m.Open_Source')
@@ -127,7 +127,7 @@
 <script>
 import NavBar from "@/components/oj/common/NavBar";
 import { mapActions, mapState, mapGetters } from "vuex";
-import { LOGO, MOTTO } from "@/common/logo";
+// import { LOGO, MOTTO } from "@/common/logo";
 import storage from "@/common/storage";
 import utils from "@/common/utils";
 export default {
@@ -255,8 +255,8 @@ export default {
     window.addEventListener("visibilitychange", this.autoRefreshUserInfo);
   },
   mounted() {
-    console.log(LOGO);
-    console.log(MOTTO);
+    // console.log(LOGO);
+    // console.log(MOTTO);
     this.autoChangeLanguge();
     this.getWebsiteConfig();
   },
@@ -588,7 +588,7 @@ a:hover {
   white-space: pre-wrap;
   margin-top: 15px;
   margin-bottom: 15px;
-  background: #f8f8f9;
+  background: #fafafa;
   border: 1px dashed #e9eaec;
 }
 
@@ -763,7 +763,7 @@ footer h1 {
   position: relative !important;
   overflow-y: hidden !important;
   font-size: 1rem !important;
-  background: #f8f8f9 !important;
+  background: #fafafa !important;
   white-space: pre !important;
 }
 .markdown-body pre code {

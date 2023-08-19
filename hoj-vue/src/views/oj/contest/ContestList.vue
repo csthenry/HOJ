@@ -94,16 +94,16 @@
                   <el-row type="flex" justify="space-between" align="middle">
                     <el-col :xs="10" :sm="4" :md="3" :lg="2">
                       <template v-if="contest.type == 0">
-                        <el-image 
-                        :src="acmSrc" 
+                        <el-image
+                        :src="acmSrc"
                         class="trophy"
                         style="width: 100px;"
                         :preview-src-list="[acmSrc]">
                         </el-image>
                       </template>
                       <template v-else>
-                        <el-image 
-                        :src="oiSrc" 
+                        <el-image
+                        :src="oiSrc"
                         class="trophy"
                         style="width: 100px;"
                         :preview-src-list="[oiSrc]">
@@ -307,8 +307,8 @@ export default {
       CONTEST_STATUS_REVERSE: {},
       CONTEST_STATUS: {},
       CONTEST_TYPE_REVERSE: {},
-      acmSrc: require('@/assets/acm.jpg'),
-      oiSrc: require('@/assets/oi.jpg'),
+      acmSrc: require('@/assets/acm.png'),
+      oiSrc: require('@/assets/oi.png'),
       loading: true,
     };
   },
@@ -470,7 +470,7 @@ export default {
   list-style: none;
 }
 #contest-list .trophy {
-  height: 70px;
+  /* height: 70px; */
   margin-left: 10px;
   margin-right: -20px;
 }

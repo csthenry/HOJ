@@ -639,7 +639,7 @@ export default {
         showCursorWhenSelecting: true,
         highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
         // extraKeys: { Ctrl: 'autocomplete' }, //自定义快捷键
-        extraKeys: { Tab: this.newTab }, //自定义快捷键
+        extraKeys: { Tab: this.newTab, "Shift-Tab": this.newShiftTab }, //自定义快捷键
         // addKeyMap: { 'Ctrl-Shift-f': this.autoFormatSelection }, //格式化快捷键
         matchBrackets: true, //括号匹配
         indentUnit: this.tabSize, //一个块（编辑语言中的含义）应缩进多少个空格
@@ -649,6 +649,7 @@ export default {
         hintOptions: {
           // 当匹配只有一项的时候是否自动补全
           completeSingle: false,
+          //hint: this.handleShowHint
         },
       },
       mode: {
@@ -709,21 +710,49 @@ export default {
     })
   },
   methods: {
-    //格式化代码
-    /*
-    autoFormatSelection() {
-      var range = this.getSelectedRange();
-      this.editor.autoFormatRange(range.from, range.to);
-      this.editor.commentRange(false, range.from, range.to);
+    // BEGIN模板级补全，开发中
+    handleShowHint(cmInstance, hintOptions) {
+    let cursor = cmInstance.getCursor();
+    let token = cmInstance.getTokenAt(cursor)
+    let found = [];
+    const currentStr = token.string;
+    if(currentStr.indexOf("#inc") != -1 ){
+      found = [{
+        text: "#include <iostream>\n#include <cstring>\n#include <algorithm>",
+        displayText: "#include",
+        displayInfo: "常用头文件",
+        render: this.hintRender
+        }, {
+        text: "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n\t\n\treturn 0;\n}",
+        displayText: "#include <bits/stdc++.h>",
+        displayInfo: "int main()模板",
+        render: this.hintRender
+        }
+      ];
+    }
+    return {
+      list: found,
+      from: {ch: token.start, line: cursor.line},
+      to: {ch: token.end, line: cursor.line}
+    }
     },
-	  // 获取编辑器中选中范围的的行号
-    getSelectedRange() {
-      return {
-          from: this.editor.getCursor(true),
-          to: this.editor.getCursor(false)
-      }
+    hintRender(element, self, data) {
+      let div = document.createElement("div");
+      div.setAttribute("class", "autocomplete-div");
+
+      let divText = document.createElement("div");
+      divText.setAttribute("class", "autocomplete-name");
+      divText.innerText = data.displayText;
+
+      let divInfo = document.createElement("div");
+      divInfo.setAttribute("class", "autocomplete-hint");
+      divInfo.innerText = data.displayInfo;
+
+      div.appendChild(divText);
+      div.appendChild(divInfo);
+      element.appendChild(div);
     },
-    */
+    // END模板级补全，开发中
     onEditorCodeChange(newCode) {
       this.$emit("update:value", newCode);
     },
@@ -731,10 +760,14 @@ export default {
     newTab() {
       var cm = this.editor;
       if (cm.somethingSelected()) {      // 存在文本选择
-	      cm.indentSelection('add');    // 正向缩进文本
-	    } else {                    // 无文本选择
+	      cm.indentSelection('add');       // 正向缩进文本
+	    } else {                           // 无文本选择
 	      cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "), "end", "+input");  // 光标处插入 indentUnit 个空格
 	    }
+    },
+    newShiftTab() {
+      var cm = this.editor;
+      cm.indentSelection('subtract');  // 反向缩进文本
     },
     onLangChange(newVal) {
       this.editor.setOption("mode", this.mode[newVal]);
@@ -1075,5 +1108,9 @@ export default {
 }
 .cm-s-material .cm-matchhighlight {
   background-color: rgba(128, 203, 196, 0.2);
+}
+.CodeMirror-hints {
+  font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+  font-size: 120%;
 }
 </style>

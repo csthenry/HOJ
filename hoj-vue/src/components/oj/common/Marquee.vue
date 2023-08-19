@@ -23,16 +23,15 @@ export default {
     let timer = setTimeout(() => {
       this.move();
       clearTimeout(timer);
-    }, 1000);
+    }, 500);
     for (let item of this.val) {
       this.text += item;
     }
   },
   methods: {
     move() {
-      let maxWidth = document.querySelector('.marquee-wrap_' + this.id)
-        .clientWidth;
       let width = document.querySelector('.getWidth_' + this.id).scrollWidth;
+      let maxWidth = document.querySelector('.marquee-wrap_' + this.id).clientWidth;
       if (width <= maxWidth) return;
       let scroll = document.querySelector('.scroll_' + this.id);
       let copy = document.querySelector('.copy_' + this.id);

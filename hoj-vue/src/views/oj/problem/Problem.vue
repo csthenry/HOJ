@@ -1346,8 +1346,11 @@ export default {
 
           // 在beforeRouteEnter中修改了, 说明本地有code，无需加载template，但要记录当前语言模板信息，供提交使用
           let codeTemplateSlice = this.getSplitCodeTemplate(this.language)
-          if (this.code !== "") {
-            return;
+          if (this.code === "") {
+            // try to load problem template
+            if (this.enableCodeTemplate) {
+              this.code = codeTemplateSlice;
+            }
           }
 
           if (this.problemData.languages.length != 0) {
@@ -1357,10 +1360,6 @@ export default {
             ) {
               this.language = this.problemData.languages[0];
             }
-          }
-          // try to load problem template
-          if (this.enableCodeTemplate) {
-            this.code = codeTemplateSlice;
           }
           this.$nextTick((_) => {
             addCodeBtn();

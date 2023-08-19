@@ -5,11 +5,11 @@
       @imgAdd="$imgAdd"
       @imgDel="$imgDel"
       :ishljs="true"
+      :externalLink="false"
       :html="openHtml"
       :autofocus="false"
       :toolbars="toolbars"
       v-model="currentValue"
-      codeStyle="arduino-light"
     >
       <template v-slot:left-toolbar-after v-if="isAdminRole">
         <button
@@ -93,6 +93,11 @@ export default {
     if (this.isAdminRole || this.isGroupAdmin) {
       this.toolbars.imagelink = true;
     }
+  },
+  mounted() {
+    this.$nextTick((_) => {
+          addCodeBtn();
+        });
   },
   methods: {
     // 将图片上传到服务器，返回地址替换到md中
