@@ -97,6 +97,7 @@ export default {
       total: 0,
       btnLoading: false,
       announcements: [],
+      isMarkdownRender: [],
       announcement: '',
       listVisible: true,
     };
@@ -111,6 +112,7 @@ export default {
       } else {
         this.getAnnouncementList();
       }
+      this.isMarkdownRender = []; //重置markdown渲染状态
     },
     getAnnouncementList(page = 1) {
       this.btnLoading = true;
@@ -146,7 +148,11 @@ export default {
     },
     goAnnouncement(announcement) {
       this.announcement = announcement;
-      this.announcement.content = this.$markDown.render(announcement.content);
+      //避免反复渲染markdown
+      if(!this.isMarkdownRender[announcement.id]){
+        this.announcement.content = this.$markDown.render(announcement.content);
+        this.isMarkdownRender[announcement.id] = true;
+      }
       this.listVisible = false;
       this.$nextTick((_) => {
         addCodeBtn();
