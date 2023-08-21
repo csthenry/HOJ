@@ -1344,6 +1344,15 @@ export default {
           this.isRemote = result.problem.isRemote;
           this.changePie(result.problemCount);
 
+          if (this.problemData.languages.length != 0) {
+            if (
+              !this.language ||
+              this.problemData.languages.indexOf(this.language) == -1
+            ) {
+              this.language = this.problemData.languages[0];
+            }
+          }
+
           // 在beforeRouteEnter中修改了, 说明本地有code，无需加载template，但要记录当前语言模板信息，供提交使用
           let codeTemplateSlice = this.getSplitCodeTemplate(this.language)
           if (this.code === "") {
@@ -1353,14 +1362,6 @@ export default {
             }
           }
 
-          if (this.problemData.languages.length != 0) {
-            if (
-              !this.language ||
-              this.problemData.languages.indexOf(this.language) == -1
-            ) {
-              this.language = this.problemData.languages[0];
-            }
-          }
           this.$nextTick((_) => {
             addCodeBtn();
           });
