@@ -842,6 +842,7 @@ export default {
 </script>
 <style scoped>
 #header {
+  font-weight: 500;
   min-width: 300px;
   position: fixed;
   top: 0;
@@ -933,6 +934,7 @@ export default {
   color: #495060 !important;
 }
 .el-menu-item {
+  font-size: 16px;
   padding: 0 13px;
 }
 .el-menu-item:hover, .el-menu .el-menu-item:hover{

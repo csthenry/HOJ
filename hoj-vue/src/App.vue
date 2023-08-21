@@ -264,6 +264,8 @@ export default {
 </script>
 
 <style>
+@import url("./assets/fonts/harmonyos.css");
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -271,7 +273,7 @@ export default {
 }
 body {
   background-color: #eff3f5 !important;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+  font-family: "HarmonyOS Sans SC", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif !important;
   color: #495060 !important;
   font-size: 12px !important;
@@ -340,6 +342,11 @@ a {
 a:hover {
   color: #2196f3 !important;
 }
+.markdown-body {
+  font-family: -apple-system, BlinkMacSystemFont, PingFang SC, HarmonyOS Sans SC,
+    Segoe UI, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
 .markdown-body a {
   color: #2196f3;
   cursor: pointer;
@@ -363,7 +370,7 @@ a:hover {
 
 .home-title {
   color: #409eff;
-  font-family: "Raleway";
+  font-family: "HarmonyOS Sans SC", "Raleway";
 }
 .contest-config{
   text-align:right;
@@ -723,8 +730,8 @@ footer a:hover {
   text-decoration: none;
 }
 footer h1 {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC,
-    Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+  font-family: -apple-system, BlinkMacSystemFont, PingFang SC, HarmonyOS Sans SC,
+    Segoe UI, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   font-weight: 300;
   color: #3d3d3d;
@@ -732,6 +739,11 @@ footer h1 {
   font-size: 1.5rem;
 }
 
+.vxe-table {
+  font-family: -apple-system, BlinkMacSystemFont, PingFang SC, HarmonyOS Sans SC,
+    Segoe UI, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol!important;
+}
 .mundb-footer {
   padding: 1rem 2.5rem;
   width: 100%;
