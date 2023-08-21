@@ -571,7 +571,7 @@ export default {
     },
     language: {
       type: String,
-      default: "C",
+      default: "C++",
     },
     height:{
       type:Number,
@@ -625,7 +625,7 @@ export default {
       options: {
         // codemirror options
         tabSize: this.tabSize,
-        mode: "text/x-csrc",
+        mode: "text/x-c++src",
         theme: "material",
         // 显示行号
         lineNumbers: true,
@@ -654,6 +654,9 @@ export default {
       },
       mode: {
         C: "text/x-csrc",
+        'C++': "text/x-c++src",
+        Java: "text/x-java",
+        'C#': "text/x-csharp",
       },
       themes: [
         { label: "monokai", value: "monokai" },
@@ -686,7 +689,9 @@ export default {
         mode[lang.name] = lang.contentType;
       });
       this.mode = mode;
-      this.editor.setOption("mode", this.mode[this.language]);
+      if(this.language){
+        this.editor.setOption("mode", this.mode[this.language]);
+      }
     });
     this.editor.setOption("theme", this.theme);
     this.editor.setSize('100%', this.height);
@@ -950,6 +955,9 @@ export default {
     },
     theme(newVal, oldVal) {
       this.editor.setOption("theme", newVal);
+    },
+    language(newVal, oldVal) {
+      this.editor.setOption("mode", this.mode[newVal]);
     },
     userInput(newVal, oldVal) {
       this.expectedOutput = null;
