@@ -313,7 +313,9 @@ samp {
   bottom: 0;
   width: 100%;
 }
-
+.mu-item-title {
+  overflow: visible;
+}
 .mobile-menu-active {
   background-color: rgba(0, 0, 0, 0.1);
 }

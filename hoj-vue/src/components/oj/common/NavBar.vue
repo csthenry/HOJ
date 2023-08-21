@@ -189,24 +189,17 @@
               @command="handleRoute"
               placement="bottom"
             >
-              <span class="el-dropdown-link">
-                <i class="el-icon-message"></i>
-                <svg
-                  v-if="
+              <el-badge is-dot class="item" :hidden="!(
                     unreadMessage.comment > 0 ||
-                      unreadMessage.reply > 0 ||
-                      unreadMessage.like > 0 ||
-                      unreadMessage.sys > 0 ||
-                      unreadMessage.mine > 0
-                  "
-                  width="10"
-                  height="10"
-                  style="vertical-align: top;margin-left: -11px;margin-top: 3px;"
+                    unreadMessage.reply > 0 ||
+                    unreadMessage.like > 0 ||
+                    unreadMessage.sys > 0 ||
+                    unreadMessage.mine > 0)"
                 >
-                  <circle cx="5" cy="5" r="5" style="fill: red;"></circle>
-                </svg>
-              </span>
-
+                <span class="el-dropdown-link">
+                  <i class="el-icon-message"></i>
+                </span>
+              </el-badge>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="/message/discuss">
                   <span>{{ $t('m.DiscussMsg') }}</span>
@@ -850,7 +843,7 @@ export default {
   height: auto;
   width: 100%;
   z-index: 2000;
-  background-color: #fff;
+  /* background-color: #fff; */
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
 }
 .mobile-nav {
@@ -933,6 +926,13 @@ export default {
 .el-submenu__title i {
   color: #495060 !important;
 }
+@supports (-webkit-backdrop-filter: blur(15px)) or (backdrop-filter: blur(15px)){
+  .el-menu {
+      background-color: rgba(255,255,255,0.7)!important;
+      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+  }
+}
 .el-menu-item {
   font-size: 16px;
   padding: 0 13px;
@@ -946,7 +946,8 @@ export default {
 .el-submenu .el-submenu__title:hover i{
   outline: 0 !important;
   color: #2E95FB !important;
-  background: linear-gradient(270deg, #F2F7FC 0%, #FEFEFE 100%)!important;
+  /* background: linear-gradient(270deg, #F2F7FC 0%, #FEFEFE 100%)!important; */
+  background-color: unset;
   transition: all .2s ease;
 }
 .el-menu .el-menu-item.is-active,
@@ -955,13 +956,15 @@ export default {
 .el-submenu.is-active i
 {
   color: #2E95FB !important;
-  background: linear-gradient(270deg, #F2F7FC 0%, #FEFEFE 100%)!important;
+  background-color: unset;
+  /* background: linear-gradient(270deg, #F2F7FC 0%, #FEFEFE 100%)!important; */
   transition: all .2s ease;
 }
 .el-menu--horizontal .el-menu .el-menu-item:hover,
 .el-submenu /deep/.el-submenu__title:hover {
   color: #2E95FB !important;
-  background: linear-gradient(270deg, #F2F7FC 0%, #FEFEFE 100%)!important;
+  background-color: unset;
+  /* background: linear-gradient(270deg, #F2F7FC 0%, #FEFEFE 100%)!important; */
 }
 .el-menu-item i {
   color: #495060;

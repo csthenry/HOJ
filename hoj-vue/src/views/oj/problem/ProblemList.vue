@@ -123,12 +123,12 @@
             </el-row>
           </template>
         </div>
+        <el-skeleton :rows="15" :loading="loadings.table" animated>
         <vxe-table
           border="inner"
           stripe
           ref="problemList"
           auto-resize
-          :loading="loadings.table"
           @cell-mouseenter="cellHover"
           :data="problemList"
         >
@@ -240,6 +240,7 @@
             </template>
           </vxe-table-column>
         </vxe-table>
+        </el-skeleton>
       </el-card>
       <Pagination
         :total="total"
@@ -290,15 +291,15 @@
           </div>
         </div>
         <template v-if="searchTagClassificationList.length > 0" v-loading="loadings.tag">
-          <el-row :gutter="10" v-for="(item,index) in secondClassificationTemp" 
+          <el-row :gutter="10" v-for="(item,index) in secondClassificationTemp"
               :key="index">
             <el-col  v-for="(tagsAndClassification,i) in item" :key="i"
               :span="query.oj == 'All' || (secondClassificationTemp.length==index+1 && item.length == i+1 && i%2 ==0)
               ?24:12">
               <el-collapse v-model="activeTagClassificationIdList" style="margin-top:10px">
                   <el-collapse-item :title="getTagClassificationName(tagsAndClassification.classification)"
-                    v-if="tagsAndClassification.classification != null 
-                        || tagsAndClassification.tagList.length > 0 " 
+                    v-if="tagsAndClassification.classification != null
+                        || tagsAndClassification.tagList.length > 0 "
                     :name="tagsAndClassification.classification == null?-1:tagsAndClassification.classification.id">
                     <el-button
                       v-for="tag in tagsAndClassification.tagList"
@@ -355,7 +356,7 @@ export default {
       JUDGE_STATUS_RESERVE: {},
       REMOTE_OJ: {},
       tagsAndClassificationList:[],
-      tagVisible: false,
+      tagVisible: true,
       currentProblemTitle: '',
       problemRecord: [],
       problemList: [],
@@ -412,12 +413,12 @@ export default {
     ];
     this.getTagList(this.query.oj);
     this.loadings.table = true;
-    setTimeout(() => {
-      // 将指定列设置为隐藏状态
-      this.$refs.problemList.getColumnByField('tag').visible = false;
-      this.$refs.problemList.refreshColumn();
-      this.loadings.table = false;
-    }, 200);
+    // setTimeout(() => {
+    //   // 将指定列设置为隐藏状态
+    //   this.$refs.problemList.getColumnByField('tag').visible = false;
+    //   this.$refs.problemList.refreshColumn();
+    //   this.loadings.table = false;
+    // }, 200);
     this.getData();
   },
   methods: {

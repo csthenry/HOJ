@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
-import Element from 'element-ui'
+import ELEMENT from 'element-ui'
 import i18n from '@/i18n'
 
 // import "element-ui/lib/theme-chalk/index.css"
@@ -73,7 +73,7 @@ VXETable.setup({
 Vue.use(VXETable) // 表格组件
 Vue.use(VueClipboard) // 剪贴板
 Vue.use(highlight) // 代码高亮
-Vue.use(Element,{
+Vue.use(ELEMENT,{
   i18n: (key, value) => i18n.t(key, value)
 })
 
