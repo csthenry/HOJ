@@ -1344,6 +1344,15 @@ export default {
           this.isRemote = result.problem.isRemote;
           this.changePie(result.problemCount);
 
+          if (this.problemData.languages.length != 0) {
+            if (
+              !this.language ||
+              this.problemData.languages.indexOf(this.language) == -1
+            ) {
+              this.language = this.problemData.languages[0];
+            }
+          }
+
           // 在beforeRouteEnter中修改了, 说明本地有code，无需加载template，但要记录当前语言模板信息，供提交使用
           let codeTemplateSlice = this.getSplitCodeTemplate(this.language)
           if (this.code === "") {
@@ -1353,14 +1362,6 @@ export default {
             }
           }
 
-          if (this.problemData.languages.length != 0) {
-            if (
-              !this.language ||
-              this.problemData.languages.indexOf(this.language) == -1
-            ) {
-              this.language = this.problemData.languages[0];
-            }
-          }
           this.$nextTick((_) => {
             addCodeBtn();
           });
@@ -1527,6 +1528,10 @@ export default {
             )
             .then((res) => {
               this.code = res.data.data.code;
+              if(this.enableCodeTemplate && res.data.data.language == this.language){
+                // 下载最后一次提交数据且语言未更改时，去掉模板前后缀，语言若更改，则在watch：language监听中处理
+                this.code = this.code.replace(this.templatePrefix, "").replace(this.templateSuffix, "");
+              }
               let lang = res.data.data.language;
               if (lang && this.problemData.languages.includes(lang)) {
                 this.language = lang;
@@ -1889,6 +1894,12 @@ export default {
         this.submitting = false;
         this.statusVisible = false;
         this.init();
+      }
+    },
+    language(newVal) {
+      this.onChangeLang(newVal);
+      if(this.enableCodeTemplate){
+        this.code = this.code.replace(this.templatePrefix, "").replace(this.templateSuffix, "");  // 下载最后一次提交数据时，去掉模板前后缀
       }
     },
     activeName() {
