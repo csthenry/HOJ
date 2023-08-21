@@ -262,6 +262,8 @@ export const m = {
   Compile: '编译',
   Compiled_Successfully: '编译成功',
   Code_Template: '代码模板',
+  Code_Template_Tips: '说明：请使用 //TEMPLATE BEGIN 和 //TEMPLATE END 来定义需要在用户侧显示的代码模板片段，模板其它部分将在代码提交时自动与用户侧代码拼接。',
+  Code_Template_Format: '格式：{other code} //TEMPLATE BEGIN {user side code} //TEMPLATE END {other code}',
   Code_template_of_the_language_cannot_be_empty:'语言的代码模板不能为空！',
   Type: '类型',
   Judge_Samples: '评测数据',

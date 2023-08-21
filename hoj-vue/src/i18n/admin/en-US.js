@@ -263,6 +263,8 @@ export const m = {
   Compile: 'Compile',
   Compiled_Successfully: 'Compiled Successfully',
   Code_Template: 'Code Template',
+  Code_Template_Tips: 'Tips: Please use //TEMPLATE BEGIN and //TEMPLATE END to define the code template fragments that need to be displayed on the user side. Other parts of the template will automatically be concatenated with the user side code when the code is submitted.',
+  Code_Template_Format: 'Format: {other code} //TEMPLATE BEGIN {user side code} //TEMPLATE END {other code}',
   Code_template_of_the_language_cannot_be_empty:'Code template of the language cannot be empty!',
   Type: 'Type',
   Read_Write_Mode: 'Read-Write Mode',
@@ -395,7 +397,7 @@ export const m = {
   Exclude_admin_submissions: 'Exclude admin submissions',
   SplitType_User: 'Split folders by username',
   SplitType_Problem: 'Split folders by problem id',
-  Delete_Contest_Tips: 'This operation will delete the contest and its submission, discussion, announcement, record and other data. Do you want to continue?',  
+  Delete_Contest_Tips: 'This operation will delete the contest and its submission, discussion, announcement, record and other data. Do you want to continue?',
 
   // /views/admin/contest/Contest.vue
   Contest_Title: 'Contest Title',
