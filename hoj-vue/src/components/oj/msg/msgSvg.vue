@@ -1,5 +1,6 @@
 <template>
-  <svg width="20" height="20">
+  <el-badge :value="total" :max="99" class="item" v-if="total > 0"></el-badge>
+  <!-- <svg width="20" height="20">
     <circle cx="10" cy="10" r="10" style="fill: red;"></circle>
     <text x="2" dy="15" style="fill: white" v-if="total >= 10">
       {{ total > 99 ? 99 : total }}
@@ -7,7 +8,7 @@
     <text x="6" dy="15" style="fill: white" v-else-if="total > 0">
       {{ total }}
     </text>
-  </svg>
+  </svg> -->
 </template>
 
 <script>

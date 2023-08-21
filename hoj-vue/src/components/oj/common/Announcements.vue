@@ -23,6 +23,7 @@
         >
       </span>
     </div>
+    <el-skeleton :rows="6" :loading="skeletonLoading" animated>
     <transition-group name="el-zoom-in-bottom">
       <div
         class="no-announcement"
@@ -74,6 +75,7 @@
         ></div>
       </template>
     </transition-group>
+  </el-skeleton>
   </el-card>
 </template>
 
@@ -95,8 +97,10 @@ export default {
   data() {
     return {
       total: 0,
+      skeletonLoading: true,
       btnLoading: false,
       announcements: [],
+      isMarkdownRender: [],
       announcement: '',
       listVisible: true,
     };
@@ -111,21 +115,26 @@ export default {
       } else {
         this.getAnnouncementList();
       }
+      this.isMarkdownRender = []; //重置markdown渲染状态
     },
     getAnnouncementList(page = 1) {
+      this.skeletonLoading = true;
       this.btnLoading = true;
       api.getAnnouncementList(page, this.limit).then(
         (res) => {
+          this.skeletonLoading = false;
           this.btnLoading = false;
           this.announcements = res.data.data.records;
           this.total = res.data.data.total;
         },
         () => {
+          this.skeletonLoading = false;
           this.btnLoading = false;
         }
       );
     },
     getContestAnnouncementList(page = 1) {
+      this.skeletonLoading = true;
       this.btnLoading = true;
       api
         .getContestAnnouncementList(
@@ -135,18 +144,24 @@ export default {
         )
         .then(
           (res) => {
+            this.skeletonLoading = false;
             this.btnLoading = false;
             this.announcements = res.data.data.records;
             this.total = res.data.data.total;
           },
           () => {
+            this.skeletonLoading = false;
             this.btnLoading = false;
           }
         );
     },
     goAnnouncement(announcement) {
       this.announcement = announcement;
-      this.announcement.content = this.$markDown.render(announcement.content);
+      //避免反复渲染markdown
+      if(!this.isMarkdownRender[announcement.id]){
+        this.announcement.content = this.$markDown.render(announcement.content);
+        this.isMarkdownRender[announcement.id] = true;
+      }
       this.listVisible = false;
       this.$nextTick((_) => {
         addCodeBtn();

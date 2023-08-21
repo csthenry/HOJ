@@ -99,11 +99,19 @@
         </el-row>
       </div>
       <div class="slider">
-        <el-slider
-          v-model="progressValue"
-          :format-tooltip="formatTooltip"
-          :step="timeStep"
-        ></el-slider>
+        <el-tooltip
+            effect="dark"
+            :content="formatTooltip(progressValue)"
+            placement="top"
+            style="margin-top:0"
+          >
+            <el-progress
+              :stroke-width="20"
+              :text-inside="true"
+              :color="customColors"
+              :percentage="progressValue.toFixed(2)"
+            ></el-progress>
+          </el-tooltip>
       </div>
       <el-row>
         <el-col
@@ -540,6 +548,10 @@ export default {
       RULE_TYPE: {},
       problemACCountMap: {},
       problemErrorCountMap: {},
+      customColors: [
+        { color: '#67c23a', percentage: 99.999 },
+        { color: '#f56c6c', percentage: 100 },
+      ],
     };
   },
   created() {

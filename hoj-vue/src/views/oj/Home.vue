@@ -39,9 +39,7 @@
             </el-carousel-item>
           </el-carousel>
         </el-card>
-        <Announcements v-if="carouselImgList.length > 0" class="card-top"></Announcements>
-        <Announcements v-else></Announcements>
-
+        <Announcements :class="carouselImgList.length ? 'card-top' : ''"></Announcements>
         <SubmissionStatistic class="card-top"></SubmissionStatistic>
         <el-card class="card-top">
           <div

@@ -29,8 +29,8 @@
                 :content="$t('m.Go_To_Group_Contest_List')"
                 style="margin-left:10px;"
                 placement="top">
-                <el-button 
-                  size="small" 
+                <el-button
+                  size="small"
                   type="primary"
                   @click="toGroupContestList(contest.gid)">
                   <i class="fa fa-users"></i>
@@ -92,11 +92,19 @@
             </el-row>
           </div>
           <div class="slider">
-            <el-slider
-              v-model="progressValue"
-              :format-tooltip="formatTooltip"
-              :step="timeStep"
-            ></el-slider>
+          <el-tooltip
+            effect="dark"
+            :content="formatTooltip(progressValue)"
+            placement="top"
+            style="margin-top:0"
+          >
+            <el-progress
+              :stroke-width="20"
+              :text-inside="true"
+              :color="customColors"
+              :percentage="progressValue.toFixed(2)"
+            ></el-progress>
+          </el-tooltip>
           </div>
           <el-row>
             <el-col :span="24" style="text-align:center">
@@ -169,8 +177,8 @@
             </el-form>
           </el-card>
           <el-card class="box-card">
-            <Markdown 
-              :isAvoidXss="contest.gid != null" 
+            <Markdown
+              :isAvoidXss="contest.gid != null"
               :content="contest.description">
             </Markdown>
           </el-card>
@@ -236,9 +244,9 @@
           </transition>
         </el-tab-pane>
 
-        <el-tab-pane 
-          name="ContestComment" 
-          lazy 
+        <el-tab-pane
+          name="ContestComment"
+          lazy
           :disabled="contestMenuDisabled"
           v-if="websiteConfig.openContestComment">
           <span slot="label"
@@ -370,6 +378,10 @@ export default {
       RULE_TYPE: {},
       btnLoading: false,
       contestPassword: '',
+      customColors: [
+        { color: '#67c23a', percentage: 99.999 },
+        { color: '#f56c6c', percentage: 100 },
+      ],
     };
   },
   created() {

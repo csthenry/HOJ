@@ -35,7 +35,7 @@
               $t('m.Result_Explanation')
             }}</span>
           </div>
-          <ul class="result">
+          <ul class="content result">
             <li>
               <span :class="getStatusColor(5)">Pending</span>
               ：{{ $t('m.Pending_Description') }}
@@ -100,7 +100,7 @@
               $t('m.Compile_Explanation')
             }}</span>
           </div>
-          <ul class="result">
+          <ul class="content result">
             <li>1. {{ $t('m.Compile_Tips1') }}</li>
             <li>2. {{ $t('m.Compile_Tips2') }}</li>
             <li>3. {{ $t('m.Compile_Tips3') }}</li>
