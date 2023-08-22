@@ -49,6 +49,7 @@
           :w="325"
           :h="100"
           :accuracy="3"
+          :imgs="verify.verifyImgs"
           @success="handleLogin"
           :slider-text="$t('m.Slide_Verify')"
           ref="slideBlock"
@@ -90,6 +91,7 @@ export default {
     return {
       btnLoginLoading: false,
       verify: {
+        verifyImgs: [require('@/assets/verify-imgs/1.jpeg'), require('@/assets/verify-imgs/2.jpeg'), require('@/assets/verify-imgs/3.jpeg'), require('@/assets/verify-imgs/4.jpeg')],
         loginSuccess: false,
         loginMsg: '',
       },
