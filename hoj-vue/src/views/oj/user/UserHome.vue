@@ -126,8 +126,8 @@
             </i>
             {{ $t('m.Thermal_energy_table_submitted_in_the_last_year') }}
           </div>
-          <calendar-heatmap 
-            :values="calendarHeatmapValue" 
+          <calendar-heatmap
+            :values="calendarHeatmapValue"
             :end-date="calendarHeatmapEndDate"
             :tooltipUnit="$t('m.Calendar_Tooltip_Uint')"
             :locale="calendarHeatLocale"
@@ -138,9 +138,9 @@
         <el-tabs type="card" style="margin-top:1rem;">
           <el-tab-pane :label="$t('m.Personal_Profile')">
             <div class="signature-body">
-              <Markdown 
+              <Markdown
                 v-if="profile.signature"
-                :isAvoidXss="true" 
+                :isAvoidXss="true"
                 :content="profile.signature">
               </Markdown>
               <div class="markdown-body" v-else>
@@ -178,10 +178,10 @@
                         v-for="(value, index) in profile.solvedGroupByDifficulty[key]"
                         :key="index"
                       >
-                        <el-button 
+                        <el-button
                           round
                           :style="getLevelColor(key)"
-                          @click="goProblem(value.problemId)" 
+                          @click="goProblem(value.problemId)"
                           size="small">{{
                           value.problemId
                         }}</el-button>
@@ -279,7 +279,7 @@ export default {
     this.calendarHeatLocale = {
           months: [
             this.$i18n.t('m.Jan'),
-            this.$i18n.t('m.Feb'), 
+            this.$i18n.t('m.Feb'),
             this.$i18n.t('m.Mar'),
             this.$i18n.t('m.Apr'),
             this.$i18n.t('m.May'),
@@ -373,7 +373,7 @@ export default {
       this.calendarHeatLocale = {
           months: [
             this.$i18n.t('m.Jan'),
-            this.$i18n.t('m.Feb'), 
+            this.$i18n.t('m.Feb'),
             this.$i18n.t('m.Mar'),
             this.$i18n.t('m.Apr'),
             this.$i18n.t('m.May'),
@@ -541,15 +541,13 @@ export default {
 .gender-male {
   font-size: 16px;
   margin-left: 5px;
-  color: white;
+  color: #409eff;
   border-radius: 4px;
   padding: 2px;
 }
-.male {
-  background-color: #409eff;
-}
 .female {
-  background-color: pink;
+  /* background-color: pink; */
+  color: pink;
 }
 .card-title{
   font-size: 1.2rem;

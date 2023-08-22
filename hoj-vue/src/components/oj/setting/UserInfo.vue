@@ -240,7 +240,11 @@ export default {
     let profile = this.$store.getters.userInfo;
     Object.keys(this.formProfile).forEach((element) => {
       if (profile[element] !== undefined) {
-        this.formProfile[element] = profile[element];
+        if (element === 'signature' && profile[element] === null) {
+          this.formProfile.signature = '';  //editor必须指定string作为text
+        } else {
+          this.formProfile[element] = profile[element];
+        }
       }
     });
   },

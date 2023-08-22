@@ -8,8 +8,7 @@
               <span class="panel-title"
                 >{{
                   query.type === '' ? $t('m.All') : parseContestType(query.type)
-                }}
-                {{ $t('m.Contests') }}</span
+                }}{{ $t('m.Contests') }}</span
               >
               <div class="filter-row">
                 <span>

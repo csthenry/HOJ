@@ -42,6 +42,7 @@
               :w="325"
               :h="100"
               :accuracy="3"
+              :imgs="verify.verifyImgs"
               @success="changePassword"
               @again="onAgain('password')"
               :slider-text="$t('m.Slide_Verify')"
@@ -125,6 +126,7 @@
               :w="325"
               :h="100"
               :accuracy="3"
+              :imgs="verify.verifyImgs"
               @success="changeEmail"
               @again="onAgain('email')"
               :slider-text="$t('m.Slide_Verify')"
@@ -217,6 +219,7 @@ export default {
         btnEmail: false,
       },
       verify: {
+        verifyImgs: [require('@/assets/verify-imgs/1.jpeg'), require('@/assets/verify-imgs/2.jpeg'), require('@/assets/verify-imgs/3.jpeg'), require('@/assets/verify-imgs/4.jpeg')],
         passwordSuccess: false,
         passwordMsg: '',
         emailSuccess: false,

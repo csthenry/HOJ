@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="about-card">
     <div class="intr-center">
       <paper-card type="server">
         <h1 class="text-darken">WePlanet OnlineJudge</h1>
@@ -29,7 +29,7 @@
         <paper-card type="server">
           <h1>{{ $t('m.Distributed') }}</h1>
           <p>
-            <small>{{ $t('m.Distributed_Desc') }}</small>
+            {{ $t('m.Distributed_Desc') }}
           </p>
           <p class="teal-text">
             <i class="el-icon-circle-check"></i> {{ $t('m.Available') }}
@@ -40,7 +40,7 @@
         <paper-card type="server">
           <h1>{{ $t('m.Customization') }}</h1>
           <p>
-            <small>{{ $t('m.Customization_Desc') }}</small>
+            {{ $t('m.Customization_Desc') }}
           </p>
           <p class="teal-text">
             <i class="el-icon-circle-check"></i> {{ $t('m.Available') }}
@@ -51,7 +51,7 @@
         <paper-card type="server">
           <h1>{{ $t('m.Security') }}</h1>
           <p>
-            <small>{{ $t('m.Security_Desc') }}</small>
+            {{ $t('m.Security_Desc') }}
           </p>
           <p class="teal-text">
             <i class="el-icon-circle-check"></i> {{ $t('m.Available') }}
@@ -62,7 +62,7 @@
         <paper-card type="server">
           <h1>{{ $t('m.Diversity') }}</h1>
           <p>
-            <small>{{ $t('m.Diversity_Desc') }}</small>
+            {{ $t('m.Diversity_Desc') }}
           </p>
           <p class="teal-text">
             <i class="el-icon-circle-check"></i> {{ $t('m.Available') }}
@@ -78,6 +78,9 @@
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
+}
+.about-card p {
+  font-size: 1rem;
 }
 paper-card[type='server'] {
   display: block;

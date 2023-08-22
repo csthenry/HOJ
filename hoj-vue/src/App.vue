@@ -612,6 +612,9 @@ a:hover {
 .el-tag--dark {
   border-color: #fff !important;
 }
+.el-notification .el-icon-info {
+    color: #409eff;
+}
 .v-note-wrapper .v-note-panel {
   height: 460px !important;
 }

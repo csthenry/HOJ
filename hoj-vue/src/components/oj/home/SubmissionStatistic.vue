@@ -88,8 +88,9 @@ export default {
             emphasis: {
               focus: "series",
             },
-            color: "#91cc75",
+            color: "#94cd78",
             data: [0, 0, 0, 0, 0, 0, 0],
+            smooth: true
           },
           {
             name: this.$i18n.t("m.Total"),
@@ -103,8 +104,9 @@ export default {
             emphasis: {
               focus: "series",
             },
-            color: "#73c0de",
+            color: "#6eb6ff",
             data: [0, 0, 0, 0, 0, 0, 0],
+            smooth: true
           },
         ],
       },

@@ -1,20 +1,20 @@
 <template>
-  <el-card class="box-card">
-    <el-collapse v-model="activeName" accordion>
-      <el-collapse-item name="Account">
-        <template slot="title">
-          <i class="fa fa-gear"> {{ $t('m.Account_Setting') }}</i>
+  <!-- <el-card class="box-card"> -->
+    <el-tabs class="box-card" v-model="activeName" type="border-card">
+      <el-tab-pane name="Account">
+        <template slot="label">
+          <i class="fa fa-gear"></i> {{ $t('m.Account_Setting') }}
         </template>
         <component :is="Account"></component>
-      </el-collapse-item>
-      <el-collapse-item name="UserInfo">
-        <template slot="title">
-          <i class="fa fa-gear"> {{ $t('m.UserInfo_Setting') }}</i>
+      </el-tab-pane>
+      <el-tab-pane name="UserInfo">
+        <template slot="label">
+          <i class="fa fa-gear"></i> {{ $t('m.UserInfo_Setting') }}
         </template>
         <component :is="UserInfo"></component>
-      </el-collapse-item>
-    </el-collapse>
-  </el-card>
+      </el-tab-pane>
+    </el-tabs>
+  <!-- </el-card> -->
 </template>
 <script>
 const Account = () => import('@/components/oj/setting/Account');
@@ -39,10 +39,5 @@ export default {
     margin-left: 10%;
     margin-right: 10%;
   }
-}
-/deep/ .el-collapse-item__header {
-  border-radius: 4px;
-  font-size: 18px;
-  color: #409eff;
 }
 </style>

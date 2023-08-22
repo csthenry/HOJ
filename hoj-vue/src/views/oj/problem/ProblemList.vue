@@ -274,7 +274,7 @@
           </el-col>
         </el-row>
       </el-card>
-      <el-card :padding="10" style="margin-top:20px">
+      <el-card :padding="10" style="margin-top:20px" v-loading="loadings.tag">
         <div slot="header" style="text-align: center;">
           <span class="taglist-title">{{ OJName + ' ' + $t('m.Tags') }}</span>
           <div style="margin: 10px 0;">
@@ -290,9 +290,9 @@
             </el-input>
           </div>
         </div>
-        <template v-if="searchTagClassificationList.length > 0" v-loading="loadings.tag">
+        <template v-if="searchTagClassificationList.length > 0">
           <el-row :gutter="10" v-for="(item,index) in secondClassificationTemp"
-              :key="index">
+              :key="index" >
             <el-col  v-for="(tagsAndClassification,i) in item" :key="i"
               :span="query.oj == 'All' || (secondClassificationTemp.length==index+1 && item.length == i+1 && i%2 ==0)
               ?24:12">
