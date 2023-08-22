@@ -242,6 +242,9 @@ export default {
       if (profile[element] !== undefined) {
         this.formProfile[element] = profile[element];
       }
+      if (this.formProfile.signature === null) {
+        this.formProfile.signature = '';  //editor必须指定string作为text
+      }
     });
   },
   methods: {

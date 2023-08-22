@@ -8,11 +8,8 @@
       effect="dark"
     >
       <template slot="title">
-        <span
-          ><i class="el-icon-s-promotion">
-            {{ $t('m.Message_Center') }}</i
-          ></span
-        >
+        <span><i class="el-icon-s-promotion"></i
+          > {{ $t('m.Message_Center') }}</span>
       </template>
     </el-alert>
     <el-tabs
@@ -116,7 +113,7 @@ export default {
 
 <style scoped>
 .msg-title {
-  background-image: linear-gradient(135deg, #2afadf 10%, #4c83ff 100%);
+  background-image: linear-gradient(135deg, #6bc1ff 10%, #6491f7 100%);
 }
 /deep/.el-alert__title {
   font-size: 18px !important;
