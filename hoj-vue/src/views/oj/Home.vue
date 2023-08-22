@@ -718,10 +718,10 @@ span.rank-tag {
   width: 14px;
   height: 0;
   margin: 0 auto;
-  margin-top: -3px;
-  border-right: 11px solid transparent;
+  margin-top: -4px;
+  border-right: 9px solid transparent;
   border-bottom: 0 none;
-  border-left: 11px solid transparent;
+  border-left: 9px solid transparent;
 }
 .cite.no0 {
   border-top: 5px solid #bf2c24;

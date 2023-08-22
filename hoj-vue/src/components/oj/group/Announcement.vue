@@ -152,11 +152,13 @@ export default {
   padding-top: 15px;
   list-style: none;
   padding-bottom: 15px;
-  margin-left: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
   margin-top: 10px;
   font-size: 16px;
-  border: 1px solid rgba(187, 187, 187, 0.5);
-  border-left: 2px solid #409eff;
+  border: 1px solid hsla(0,0%,73.3%,.5);
+  border-left: 4px solid #409eff;
+  border-radius: 6px;
 }
 .flex-container {
   text-align: center;
@@ -167,7 +169,7 @@ export default {
 
 .flex-container .title .entry {
   color: #495060;
-  font-style: oblique;
+  font-size: 18px;
 }
 .flex-container .title a:hover {
   color: #2d8cf0;

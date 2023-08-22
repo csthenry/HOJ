@@ -707,11 +707,11 @@ export default {
             this.$notify.info({
               title: '未读消息',
               message:
-                '亲爱的【' +
+                '亲爱的 ' +
                 this.userInfo.username +
-                '】，您有最新的' +
+                '，您有最新的' +
                 sumMsg +
-                '条未读消息，请注意查看！',
+                '条未读消息，请注意查看。',
               position: 'bottom-right',
               duration: 5000,
             });
@@ -719,11 +719,11 @@ export default {
             this.$notify.info({
               title: 'Unread Message',
               message:
-                'Dear【' +
+                'Dear ' +
                 this.userInfo.username +
-                '】, you have the latest ' +
+                ', you have the latest ' +
                 sumMsg +
-                ' unread messages. Please check them!',
+                ' unread messages. Please check them.',
               position: 'bottom-right',
               duration: 5000,
             });
