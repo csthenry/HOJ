@@ -127,7 +127,7 @@
 <script>
 import NavBar from "@/components/oj/common/NavBar";
 import { mapActions, mapState, mapGetters } from "vuex";
-// import { LOGO, MOTTO } from "@/common/logo";
+import { LOGO, LOGO_Style, MOTTO } from "@/common/logo";
 import storage from "@/common/storage";
 import utils from "@/common/utils";
 export default {
@@ -255,8 +255,8 @@ export default {
     window.addEventListener("visibilitychange", this.autoRefreshUserInfo);
   },
   mounted() {
-    // console.log(LOGO);
-    // console.log(MOTTO);
+    console.log(LOGO, LOGO_Style[0], LOGO_Style[1]);
+    console.log(MOTTO);
     this.autoChangeLanguge();
     this.getWebsiteConfig();
   },
@@ -833,11 +833,11 @@ footer h1 {
 
 .markdown-body blockquote {
   color: #666;
-  border-left: 4px solid #8bc34a;
+  border-left: .4rem solid #42b983;
   padding: 10px;
   margin-left: 0;
   font-size: 14px;
-  background: #f8f8f8;
+  background: #e8ecf3;
 }
 .markdown-body h1,
 .markdown-body h2,
@@ -861,7 +861,6 @@ footer h1 {
   font-size: 1.45em;
   line-height: 1.425;
   border-bottom: 1px solid #eee;
-  background: #cce5ff;
   padding: 8px 10px;
   color: #545857;
   border-radius: 3px;
