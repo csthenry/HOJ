@@ -51,49 +51,51 @@
               $t('m.Latest_Problem')
             }}</span>
           </div>
-          <vxe-table
-            border="inner"
-            highlight-hover-row
-            stripe
-            :loading="loading.recentUpdatedProblemsLoading"
-            auto-resize
-            :data="recentUpdatedProblems"
-            @cell-click="goProblem"
-          >
-            <vxe-table-column
-              field="problemId"
-              :title="$t('m.Problem_ID')"
-              min-width="100"
-              show-overflow
-              align="center"
+          <el-skeleton :rows="8" :loading="loading.recentUpdatedProblemsLoading" animated>
+            <vxe-table
+              border="inner"
+              highlight-hover-row
+              stripe
+              :loading="loading.recentUpdatedProblemsLoading"
+              auto-resize
+              :data="recentUpdatedProblems"
+              @cell-click="goProblem"
             >
-            </vxe-table-column>
-            <vxe-table-column
-              field="title"
-              :title="$t('m.Title')"
-              show-overflow
-              min-width="130"
-              align="center"
-            >
-            </vxe-table-column>
-            <vxe-table-column
-              field="gmtModified"
-              :title="$t('m.Recent_Update')"
-              show-overflow
-              min-width="96"
-              align="center"
-            >
-              <template v-slot="{ row }">
-                <el-tooltip
-                  :content="row.gmtModified | localtime"
-                  placement="top"
-                >
-                  <span>{{ row.gmtModified | fromNow }}</span>
-                </el-tooltip>
-              </template>
-            </vxe-table-column>
+              <vxe-table-column
+                field="problemId"
+                :title="$t('m.Problem_ID')"
+                min-width="100"
+                show-overflow
+                align="center"
+              >
+              </vxe-table-column>
+              <vxe-table-column
+                field="title"
+                :title="$t('m.Title')"
+                show-overflow
+                min-width="130"
+                align="center"
+              >
+              </vxe-table-column>
+              <vxe-table-column
+                field="gmtModified"
+                :title="$t('m.Recent_Update')"
+                show-overflow
+                min-width="96"
+                align="center"
+              >
+                <template v-slot="{ row }">
+                  <el-tooltip
+                    :content="row.gmtModified | localtime"
+                    placement="top"
+                  >
+                    <span>{{ row.gmtModified | fromNow }}</span>
+                  </el-tooltip>
+                </template>
+              </vxe-table-column>
 
-          </vxe-table>
+            </vxe-table>
+          </el-skeleton>
         </el-card>
       </el-col>
       <el-col
