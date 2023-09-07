@@ -51,49 +51,51 @@
               $t('m.Latest_Problem')
             }}</span>
           </div>
-          <vxe-table
-            border="inner"
-            highlight-hover-row
-            stripe
-            :loading="loading.recentUpdatedProblemsLoading"
-            auto-resize
-            :data="recentUpdatedProblems"
-            @cell-click="goProblem"
-          >
-            <vxe-table-column
-              field="problemId"
-              :title="$t('m.Problem_ID')"
-              min-width="100"
-              show-overflow
-              align="center"
+          <el-skeleton :rows="8" :loading="loading.recentUpdatedProblemsLoading" animated>
+            <vxe-table
+              border="inner"
+              highlight-hover-row
+              stripe
+              :loading="loading.recentUpdatedProblemsLoading"
+              auto-resize
+              :data="recentUpdatedProblems"
+              @cell-click="goProblem"
             >
-            </vxe-table-column>
-            <vxe-table-column
-              field="title"
-              :title="$t('m.Title')"
-              show-overflow
-              min-width="130"
-              align="center"
-            >
-            </vxe-table-column>
-            <vxe-table-column
-              field="gmtModified"
-              :title="$t('m.Recent_Update')"
-              show-overflow
-              min-width="96"
-              align="center"
-            >
-              <template v-slot="{ row }">
-                <el-tooltip
-                  :content="row.gmtModified | localtime"
-                  placement="top"
-                >
-                  <span>{{ row.gmtModified | fromNow }}</span>
-                </el-tooltip>
-              </template>
-            </vxe-table-column>
+              <vxe-table-column
+                field="problemId"
+                :title="$t('m.Problem_ID')"
+                min-width="100"
+                show-overflow
+                align="center"
+              >
+              </vxe-table-column>
+              <vxe-table-column
+                field="title"
+                :title="$t('m.Title')"
+                show-overflow
+                min-width="130"
+                align="center"
+              >
+              </vxe-table-column>
+              <vxe-table-column
+                field="gmtModified"
+                :title="$t('m.Recent_Update')"
+                show-overflow
+                min-width="96"
+                align="center"
+              >
+                <template v-slot="{ row }">
+                  <el-tooltip
+                    :content="row.gmtModified | localtime"
+                    placement="top"
+                  >
+                    <span>{{ row.gmtModified | fromNow }}</span>
+                  </el-tooltip>
+                </template>
+              </vxe-table-column>
 
-          </vxe-table>
+            </vxe-table>
+          </el-skeleton>
         </el-card>
       </el-col>
       <el-col
@@ -249,66 +251,68 @@
               <i class="el-icon-s-data"></i> {{ $t('m.Recent_7_Days_AC_Rank')}}
             </span>
           </div>
-          <vxe-table
-            border="inner"
-            stripe
-            auto-resize
-            align="center"
-            :data="recentUserACRecord"
-            max-height="500px"
-            :loading="loading.recent7ACRankLoading"
-          >
-            <vxe-table-column
-              type="seq"
-              min-width="50"
+          <el-skeleton :rows="5" :loading="loading.recent7ACRankLoading" animated>
+            <vxe-table
+              border="inner"
+              stripe
+              auto-resize
+              align="center"
+              :data="recentUserACRecord"
+              max-height="500px"
+              :loading="loading.recent7ACRankLoading"
             >
-              <template v-slot="{ rowIndex }">
-                <span :class="getRankTagClass(rowIndex)">{{ rowIndex + 1 }}
-                </span>
-                <span :class="'cite no' + rowIndex"></span>
-              </template>
-            </vxe-table-column>
-            <vxe-table-column
-              field="username"
-              :title="$t('m.Username')"
-              min-width="200"
-              align="left"
-            >
-              <template v-slot="{ row }">
-                <avatar
-                  :username="row.username"
-                  :inline="true"
-                  :size="25"
-                  color="#FFF"
-                  :src="row.avatar"
-                  class="user-avatar"
-                ></avatar>
-                <a
-                  @click="goUserHome(row.username, row.uid)"
-                  style="color:#2d8cf0;"
-                >{{ row.username }}</a>
-                <span
-                  style="margin-left:2px"
-                  v-if="row.titleName"
-                >
-                  <el-tag
-                    effect="dark"
-                    size="small"
-                    :color="row.titleColor"
+              <vxe-table-column
+                type="seq"
+                min-width="50"
+              >
+                <template v-slot="{ rowIndex }">
+                  <span :class="getRankTagClass(rowIndex)">{{ rowIndex + 1 }}
+                  </span>
+                  <span :class="'cite no' + rowIndex"></span>
+                </template>
+              </vxe-table-column>
+              <vxe-table-column
+                field="username"
+                :title="$t('m.Username')"
+                min-width="200"
+                align="left"
+              >
+                <template v-slot="{ row }">
+                  <avatar
+                    :username="row.username"
+                    :inline="true"
+                    :size="25"
+                    color="#FFF"
+                    :src="row.avatar"
+                    class="user-avatar"
+                  ></avatar>
+                  <a
+                    @click="goUserHome(row.username, row.uid)"
+                    style="color:#2d8cf0;"
+                  >{{ row.username }}</a>
+                  <span
+                    style="margin-left:2px"
+                    v-if="row.titleName"
                   >
-                    {{ row.titleName }}
-                  </el-tag>
-                </span>
-              </template>
-            </vxe-table-column>
-            <vxe-table-column
-              field="ac"
-              :title="$t('m.AC')"
-              min-width="50"
-              align="left"
-            >
-            </vxe-table-column>
-          </vxe-table>
+                    <el-tag
+                      effect="dark"
+                      size="small"
+                      :color="row.titleColor"
+                    >
+                      {{ row.titleName }}
+                    </el-tag>
+                  </span>
+                </template>
+              </vxe-table-column>
+              <vxe-table-column
+                field="ac"
+                :title="$t('m.AC')"
+                min-width="50"
+                align="left"
+              >
+              </vxe-table-column>
+            </vxe-table>
+          </el-skeleton>
         </el-card>
         <el-card class="card-top">
           <div
