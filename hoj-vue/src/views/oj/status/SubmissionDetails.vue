@@ -145,11 +145,11 @@
       </vxe-table>
     </el-col>
     <template v-if="testCaseResult != null">
-      <template v-if="testCaseResult.judgeCaseMode == JUDGE_CASE_MODE.DEFAULT 
+      <template v-if="testCaseResult.judgeCaseMode == JUDGE_CASE_MODE.DEFAULT
         || testCaseResult.judgeCaseMode == JUDGE_CASE_MODE.ERGODIC_WITHOUT_ERROR ">
         <el-col
           :span="24"
-          v-if="testCaseResult != null 
+          v-if="testCaseResult != null
       && testCaseResult.judgeCaseList != null
       && testCaseResult.judgeCaseList.length > 0"
         >
@@ -279,7 +279,7 @@
         v-if="submission.code"
       >
         <Highlight
-          :code="submission.code"
+          :code="displayCode"
           :language="submission.language"
           :border-color.sync="status.color"
         ></Highlight>
@@ -346,6 +346,7 @@ export default {
         submitTime: "",
         pid: "",
         cid: "",
+        gid: "",
         displayPid: "",
         status: 0,
         time: "",
@@ -355,6 +356,7 @@ export default {
         errorMessage: "",
         share: true,
       },
+      displayCode: "",
       tableData: [],
       testCaseResult: {},
       codeShare: true,
@@ -380,7 +382,7 @@ export default {
   },
   methods: {
     doCopy() {
-      this.$copyText(this.submission.code).then(
+      this.$copyText(this.displayCode).then(
         () => {
           myMessage.success(this.$i18n.t("m.Copied_successfully"));
         },
@@ -389,7 +391,28 @@ export default {
         }
       );
     },
-
+    splitCodeTemplate(lang) {
+      let func =
+        this.$route.name === "ContestSubmissionDetails"
+          ? "getContestProblem"
+          : "getProblem";
+      api[func](this.submission.displayPid, this.submission.cid, this.submission.gid, true).then((res) => {
+        let codeTemplate = res.data.data.codeTemplate;
+        if (codeTemplate && codeTemplate[lang]) {
+          //正则处理代码模板
+          let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
+          let templatePrefix = String(codeTemplate[lang]).replace(reg, "$1");
+          let templateSuffix = String(codeTemplate[lang]).replace(reg, "$3");
+          this.displayCode = this.submission.code.replace(templatePrefix, "");
+          this.displayCode = this.displayCode.replace(templateSuffix, "");
+        } else {
+          this.displayCode = this.submission.code;
+        }
+        this.$nextTick((_) => {
+          addCodeBtn();
+        });
+      });
+    },
     submissionTimeFormat(time) {
       return utils.submissionTimeFormat(time);
     },
@@ -465,6 +488,7 @@ export default {
             data.submission.displayPid = this.$route.params.problemID;
           }
           this.submission = data.submission;
+          this.splitCodeTemplate(this.submission.language); //分离代码模板
           this.tableData = [data.submission];
           if (data.submission.cid != 0) {
             // 比赛的提交不可分享
@@ -472,10 +496,6 @@ export default {
           } else {
             this.codeShare = data.codeShare;
           }
-
-          this.$nextTick((_) => {
-            addCodeBtn();
-          });
         },
         () => {
           this.loadingTable = false;
