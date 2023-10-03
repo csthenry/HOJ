@@ -399,12 +399,17 @@ export default {
       api[func](this.submission.displayPid, this.submission.cid, this.submission.gid, true).then((res) => {
         let codeTemplate = res.data.data.codeTemplate;
         if (codeTemplate && codeTemplate[lang]) {
-          //正则处理代码模板
-          let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
-          let templatePrefix = String(codeTemplate[lang]).replace(reg, "$1");
-          let templateSuffix = String(codeTemplate[lang]).replace(reg, "$3");
-          this.displayCode = this.submission.code.replace(templatePrefix, "");
-          this.displayCode = this.displayCode.replace(templateSuffix, "");
+          //特判无模板标记的情况，则不进行模板分割
+          if (codeTemplate[lang].indexOf("//TEMPLATE BEGIN") == -1 || codeTemplate[lang].indexOf("//TEMPLATE END") == -1) {
+            this.displayCode = this.submission.code;
+          } else {
+            //正则处理代码模板
+            let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/gms;
+            let templatePrefix = String(codeTemplate[lang]).replace(reg, "$1");
+            let templateSuffix = String(codeTemplate[lang]).replace(reg, "$3");
+            this.displayCode = String(this.submission.code).replace(templatePrefix, "");
+            this.displayCode = String(this.displayCode).replace(templateSuffix, "");
+          }
         } else {
           this.displayCode = this.submission.code;
         }

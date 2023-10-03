@@ -1042,10 +1042,17 @@ export default {
       if (codeTemplate && codeTemplate[lang]) {
         //正则处理代码模板
         this.enableCodeTemplate = true;
-        let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/;
-        this.templatePrefix = String(codeTemplate[lang]).replace(reg, "$1");
-        this.templateSuffix = String(codeTemplate[lang]).replace(reg, "$3");
-        codeTemplateSlice = String(codeTemplate[lang]).replace(reg, "$2");
+        //特判无模板标记的情况，则不进行模板分割
+        if(codeTemplate[lang].indexOf("//TEMPLATE BEGIN") == -1 || codeTemplate[lang].indexOf("//TEMPLATE END") == -1){
+          this.templatePrefix = "";
+          this.templateSuffix = "";
+          codeTemplateSlice = codeTemplate[lang];
+        } else {
+          let reg = /([\s\S]*)\/\/TEMPLATE\sBEGIN\n([\s\S]*)\n\/\/TEMPLATE\sEND([\s\S]*)/gms;
+          this.templatePrefix = String(codeTemplate[lang]).replace(reg, "$1");
+          this.templateSuffix = String(codeTemplate[lang]).replace(reg, "$3");
+          codeTemplateSlice = String(codeTemplate[lang]).replace(reg, "$2");
+        }
       } else {
         this.enableCodeTemplate = false;
         this.templatePrefix = "";
