@@ -222,13 +222,13 @@ export default {
 ul {
   margin: 0;
 }
-@media screen and (min-width: 1050px) {
+/* @media screen and (min-width: 1050px) {
   #problem-footer {
     margin: 0 -1%;
   }
-}
+} */
 /deep/.el-card__body {
-  padding: 5px 0px !important;
+  padding: 5px !important;
 }
 .dataNav {
   display: flex;

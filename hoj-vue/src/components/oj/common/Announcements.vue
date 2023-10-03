@@ -23,59 +23,67 @@
         >
       </span>
     </div>
-    <el-skeleton :rows="6" :loading="skeletonLoading" animated>
-    <transition-group name="el-zoom-in-bottom">
-      <div
-        class="no-announcement"
-        v-if="!announcements.length"
-        key="no-announcement"
-      >
-        <el-empty :description="$t('m.No_Announcements')"></el-empty>
-      </div>
-      <template v-if="listVisible">
-        <ul class="announcements-container" key="list">
-          <li v-for="announcement in announcements" :key="announcement.title">
-            <div class="flex-container">
-              <div class="title">
-                <a class="entry" @click="goAnnouncement(announcement)">
-                  {{ announcement.title }}</a
-                >
-              </div>
-
-              <div class="info">
-                <span class="date">
-                  <i class="el-icon-edit"></i>
-                  {{ announcement.gmtCreate | localtime }}
-                </span>
-                <span class="creator">
-                  <i class="el-icon-user"></i>
-                  {{ announcement.username }}
-                </span>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <Pagination
-          v-if="!isContest"
-          key="page"
-          :total="total"
-          :page-size="limit"
-          @on-change="getAnnouncementList"
-        >
-        </Pagination>
+    <el-skeleton :count="4" :loading="skeletonLoading" :throttle="skeletonDelay" animated>
+      <template slot="template">
+        <el-skeleton-item
+          variant="button"
+          style="margin-bottom:15px; width: 100%; height: 88px;"
+        />
       </template>
+      <template>
+        <transition-group name="el-zoom-in-bottom">
+          <div
+            class="no-announcement"
+            v-if="!announcements.length"
+            key="no-announcement"
+          >
+            <el-empty :description="$t('m.No_Announcements')"></el-empty>
+          </div>
+          <template v-if="listVisible">
+            <ul class="announcements-container" key="list">
+              <li v-for="announcement in announcements" :key="announcement.title">
+                <div class="flex-container">
+                  <div class="title">
+                    <a class="entry" @click="goAnnouncement(announcement)">
+                      {{ announcement.title }}</a
+                    >
+                  </div>
 
-      <template v-else>
-        <div
-          v-katex
-          v-highlight
-          v-html="announcement.content"
-          key="content"
-          class="content-container markdown-body"
-        ></div>
+                  <div class="info">
+                    <span class="date">
+                      <i class="el-icon-edit"></i>
+                      {{ announcement.gmtCreate | localtime }}
+                    </span>
+                    <span class="creator">
+                      <i class="el-icon-user"></i>
+                      {{ announcement.username }}
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <Pagination
+              v-if="!isContest"
+              key="page"
+              :total="total"
+              :page-size="limit"
+              @on-change="getAnnouncementList"
+            >
+            </Pagination>
+          </template>
+
+          <template v-else>
+            <div
+              v-katex
+              v-highlight
+              v-html="announcement.content"
+              key="content"
+              class="content-container markdown-body"
+            ></div>
+          </template>
+        </transition-group>
       </template>
-    </transition-group>
-  </el-skeleton>
+    </el-skeleton>
   </el-card>
 </template>
 
@@ -98,6 +106,7 @@ export default {
     return {
       total: 0,
       skeletonLoading: true,
+      skeletonDelay: 0,
       btnLoading: false,
       announcements: [],
       isMarkdownRender: [],
@@ -110,6 +119,9 @@ export default {
   },
   methods: {
     init() {
+      if(this.total !== 0) {
+        this.skeletonDelay = 500;
+      }
       if (this.isContest) {
         this.getContestAnnouncementList();
       } else {
