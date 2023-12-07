@@ -694,7 +694,7 @@ a:hover {
   text-align: center;
 }
 .el-tag--dark {
-  border-color: none !important;
+  border: none !important;
 }
 .el-notification .el-icon-info {
     color: #409eff;

@@ -2,8 +2,7 @@
   <div>
     <template v-if="!mobileNar">
       <div id="header">
-        <el-menu :default-active="activeMenuName" mode="horizontal" router active-text-color="#2196f3"
-          text-color="#495060">
+        <el-menu :default-active="activeMenuName" mode="horizontal" router active-text-color="#2196f3">
           <div class="logo">
             <el-tooltip :content="$t('m.Click_To_Change_Web_Language')" placement="bottom" effect="dark">
               <el-image style="width: 139px; height: 50px" :src="imgUrl" fit="scale-down"
@@ -760,7 +759,7 @@ export default {
   color: #4e4e4e;
 }
 .el-submenu__title i {
-  color: #495060 !important;
+  color: var(--text-color) !important;
 }
 
 @supports (-webkit-backdrop-filter: blur(15px)) or (backdrop-filter: blur(15px)) {
@@ -805,7 +804,7 @@ export default {
   /* background: linear-gradient(270deg, #F2F7FC 0%, #FEFEFE 100%)!important; */
 }
 .el-menu-item i {
-  color: #495060;
+  color: var(--text-color);
 }
 .is-active .el-submenu__title i,
 .is-active {
