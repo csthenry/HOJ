@@ -530,7 +530,7 @@ export default {
   color: #2196f3;
 }
 .signature-body {
-  background: #fff;
+  background: var(--box-bg-color);
   overflow: hidden;
   width: 100%;
   padding: 10px 10px;

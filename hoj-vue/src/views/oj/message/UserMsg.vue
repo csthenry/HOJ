@@ -255,7 +255,7 @@ export default {
   margin-left: 13px;
 }
 .msg-list-item .title .content {
-  color: #222;
+  color: var(--text-color);
   word-break: break-word;
   margin: 10px 0;
   overflow: hidden;

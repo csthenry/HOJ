@@ -724,7 +724,7 @@ export default {
         myMessage.error(this.$i18n.t("m.Discussion_content") + " " + this.$i18n.t("m.Can_not_exceed_65535"));
         return;
       }
-      
+
       // 默认为题目的讨论添加题号格式
       let discussion = Object.assign({}, this.discussion);
       if (this.discussionDialogTitle == this.$i18n.t("m.Create_Discussion")) {
@@ -832,7 +832,7 @@ export default {
   padding: 0 !important;
 }
 .discussion-header {
-  background-color: #fff;
+  background-color: var(--box-bg-color);
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 10px;
@@ -872,11 +872,10 @@ export default {
 .article-hlink a {
   font-size: 16px;
   font-weight: 600;
-  color: #34495e;
+  color: var(--text-color);
   margin-top: 5px;
 }
 a {
-  color: #34495e;
   text-decoration: none;
 }
 
@@ -911,7 +910,7 @@ a {
 }
 
 .category-body {
-  background: #fff;
+  background: var(--box-bg-color);
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 6px;
@@ -919,7 +918,7 @@ a {
   margin-top: 12px;
 }
 .category-body .title-sidebar {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   width: 100%;
   color: #34495e;
   font-size: 14px;
@@ -941,12 +940,7 @@ a {
   padding: 3px 10px;
   margin-bottom: 5px;
 }
-.category-item a {
-  color: #34495e;
-}
 .category-item:hover {
-  background-color: #eff3f5 !important;
   font-weight: bold;
-  color: #222;
 }
 </style>

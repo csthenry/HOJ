@@ -229,7 +229,7 @@ export default {
 }
 
 .flex-container .title .entry {
-  color: #495060;
+  color: var(--text-color);
   font-size: 18px;
 }
 .flex-container .title a:hover {

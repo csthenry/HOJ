@@ -1943,7 +1943,7 @@ a {
   border-radius: 4px;
   border: 1px solid #ddd;
   border-left: 2px solid #3498db;
-  background: #fafafa;
+  background-color: var(--bg-color);
   padding: 10px;
   line-height: 1.8;
   margin-bottom: 10px;
@@ -2154,7 +2154,7 @@ a {
   white-space: pre;
   margin-top: 10px;
   margin-bottom: 10px;
-  background: #f1f1f1;
+  background-color: var(--bg-color);
   border: 1px dashed #e9eaec;
   overflow: auto;
   font-size: 1.1em;

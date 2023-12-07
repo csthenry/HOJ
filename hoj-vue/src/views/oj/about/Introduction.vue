@@ -173,7 +173,7 @@ export default {
   white-space: pre-wrap;
   margin-top: 15px;
   margin-bottom: 15px;
-  background: #f8f8f9;
+  background-color: var(--bg-color);
   border: 1px dashed #e9eaec;
 }
 @media screen and (max-width: 768px) {

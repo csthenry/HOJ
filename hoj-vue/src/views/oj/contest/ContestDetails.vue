@@ -602,7 +602,7 @@ export default {
   padding-bottom: 0px;
 }
 /deep/.el-tabs__nav-wrap {
-  background: #fff;
+  background-color: var(--box-bg-color);
   border-radius: 3px;
 }
 /deep/.el-tabs--top .el-tabs__item.is-top:nth-child(2) {
