@@ -990,7 +990,7 @@ export default {
 }
 .setting-title {
   border-bottom: 1px solid #f3f3f6;
-  color: #000;
+  color: var(--text-color);
   font-weight: 700;
   padding: 10px 0;
 }
@@ -1000,7 +1000,7 @@ export default {
 }
 .setting-item-name {
   flex: 2;
-  color: #333;
+  color: var(--text-color);
   font-weight: 700;
   font-size: 13px;
   margin-top: 7px;
@@ -1049,7 +1049,7 @@ export default {
   flex: 10;
 }
 /deep/.el-textarea__inner[readonly] {
-  background-color: #f7f8f9 !important;
+  background-color: var(--bg-color) !important;
 }
 .color-gray {
   color: #999;

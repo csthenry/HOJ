@@ -829,7 +829,7 @@ ul {
   float: right;
 }
 .title-a {
-  color: #495060;
+  color: var(--text-color);
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;

@@ -602,7 +602,7 @@ export default {
   padding-bottom: 0px;
 }
 /deep/.el-tabs__nav-wrap {
-  background: #fff;
+  background-color: var(--box-bg-color);
   border-radius: 3px;
 }
 /deep/.el-tabs--top .el-tabs__item.is-top:nth-child(2) {
@@ -621,7 +621,6 @@ export default {
 .el-tag {
   color: rgb(25, 190, 107);
   background: #fff;
-  border: 1px solid #e9eaec;
   font-size: 18px;
 }
 .sub-menu {

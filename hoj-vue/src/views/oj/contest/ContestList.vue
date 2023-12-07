@@ -490,7 +490,7 @@ export default {
   margin-bottom: 0;
 }
 #contest-list .contest-main .title a.entry {
-  color: #495060;
+  color: var(--text-color);
 }
 #contest-list .contest-main .title a:hover {
   color: #2d8cf0;

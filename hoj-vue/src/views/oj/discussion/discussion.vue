@@ -109,8 +109,8 @@
         </div>
       </div>
       <div class="body-article">
-        <Markdown 
-          :isAvoidXss="discussion.role != 'root'&&discussion.role != 'admin'" 
+        <Markdown
+          :isAvoidXss="discussion.role != 'root'&&discussion.role != 'admin'"
           :content="discussion.content">
         </Markdown>
       </div>
@@ -377,13 +377,13 @@ export default {
 }
 .container {
   box-sizing: border-box;
-  background-color: #fff;
+  background: var(--box-bg-color);
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
-  border: 1px solid #ebeef5;
+  border: 1px solid var(--border-color);
   margin-bottom: 20px;
 }
 .title-article {
-  background: #fff;
+  background: var(--box-bg-color);
   overflow: hidden;
   padding: 10px 20px;
   position: relative;
@@ -392,7 +392,7 @@ export default {
 .title-article h1.title {
   font-size: 25px;
   font-weight: 600;
-  color: #34495e;
+  color: var(--text-color);
   padding: 0 0 10px;
   width: 80%;
   line-height: 32px;
@@ -447,7 +447,7 @@ export default {
 }
 
 .body-article {
-  background: #fff;
+  background: var(--box-bg-color);
   overflow: hidden;
   width: 100%;
   padding: 20px 20px;

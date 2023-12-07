@@ -472,6 +472,6 @@ export default {
   top: 0;
   bottom: 0;
   left: 50%;
-  border: 1px dashed #eee;
+  border: 1px dashed var(--border-color);
 }
 </style>

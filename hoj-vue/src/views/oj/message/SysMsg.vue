@@ -201,7 +201,7 @@ export default {
   line-height: 30px;
 }
 .title {
-  color: #333;
+  color: var(--text-color);
   font-weight: 700;
   font-size: 14px;
 }

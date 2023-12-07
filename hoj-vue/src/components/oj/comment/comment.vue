@@ -1012,9 +1012,9 @@ export default {
 .container {
   padding: 10px 20px;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: var(--box-bg-color);
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
-  border: 1px solid #ebeef5;
+  border: 1px solid var(--border-color);
   margin-bottom: 10px;
 }
 .container .own-input {
@@ -1098,7 +1098,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-color);
 }
 .container .comment .info {
   display: flex;
@@ -1127,7 +1127,7 @@ export default {
 }
 .container .comment .content {
   font-size: 16px;
-  color: #303133;
+  color: var(--text-color);
   line-height: 20px;
   padding: 10px 0;
 }

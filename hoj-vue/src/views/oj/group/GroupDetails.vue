@@ -85,9 +85,9 @@
                 <i class="el-icon-s-tools"></i>&nbsp;{{ $t('m.Group_Setting') }}
               </span>
             </el-tab-pane>
-            <el-tab-pane 
-              lazy 
-              name="GroupRank" 
+            <el-tab-pane
+              lazy
+              name="GroupRank"
               :disabled="groupMenuDisabled">
               <span slot="label">
                 <i class="el-icon-medal-1"></i>&nbsp;{{ $t('m.Group_Rank') }}
@@ -99,10 +99,10 @@
 
       <template
         v-if="
-          $route.name === 'GroupSubmissionList' || 
+          $route.name === 'GroupSubmissionList' ||
           $route.name === 'GroupSubmissionDetails' ||
             $route.name === 'GroupProblemDetails' ||
-            ($route.name != 'GroupTrainingList' 
+            ($route.name != 'GroupTrainingList'
              && $route.name.startsWith('GroupTraining'))
         "
       >
@@ -128,7 +128,7 @@
                 <div class="description-body">
                   <Markdown
                     v-if="group.description"
-                    :isAvoidXss="true" 
+                    :isAvoidXss="true"
                     :content="group.description">
                   </Markdown>
                   <div class="markdown-body" v-else>
@@ -581,14 +581,13 @@ export default {
   padding-bottom: 0px;
 }
 /deep/.el-tabs__nav-wrap {
-  background: #fff;
+  background-color: var(--box-bg-color);
   border-radius: 3px;
 }
 /deep/.el-tabs--top .el-tabs__item.is-top:nth-child(2) {
   padding-left: 20px;
 }
 .description-body {
-  background: #fff;
   overflow: hidden;
   width: 100%;
   padding: 10px 10px;
@@ -602,7 +601,7 @@ export default {
   top: 0;
   bottom: 0;
   left: 50%;
-  border: 1px dashed #eee;
+  border: 1px dashed var(--border-color);
 }
 .info-rows > * {
   margin-bottom: var(--info-row-margin-bottom, 1em);
@@ -610,7 +609,7 @@ export default {
   align-items: center;
   font-size: 16px;
   line-height: 1.5;
-  color: rgba(0, 0, 0, 0.75);
+  /* color: rgba(0, 0, 0, 0.75); */
 }
 .info-rows > * > *:first-child {
   flex: 1 0 auto;

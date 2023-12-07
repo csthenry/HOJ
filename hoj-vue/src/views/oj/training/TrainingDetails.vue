@@ -149,8 +149,8 @@
                     $t('m.Training_Introduction')
                   }}</span>
                 </div>
-                <Markdown 
-                  :isAvoidXss="groupID" 
+                <Markdown
+                  :isAvoidXss="groupID"
                   :content="training.description">
                 </Markdown>
               </el-card>
@@ -202,7 +202,7 @@ import myMessage from '@/common/message';
 import api from '@/common/api';
 import Markdown from '@/components/oj/common/Markdown';
 export default {
-  components: { 
+  components: {
     Markdown
   },
   data() {
@@ -338,7 +338,7 @@ export default {
   align-items: center;
   font-size: 16px;
   line-height: 1.5;
-  color: rgba(0, 0, 0, 0.75);
+  /* color: rgba(0, 0, 0, 0.75); */
 }
 .info-rows > * > *:first-child {
   flex: 1 0 auto;
@@ -352,7 +352,7 @@ export default {
   padding-bottom: 0px;
 }
 /deep/.el-tabs__nav-wrap {
-  background: #fff;
+  background-color: var(--box-bg-color);
   border-radius: 3px;
 }
 /deep/.el-tabs--top .el-tabs__item.is-top:nth-child(2) {
