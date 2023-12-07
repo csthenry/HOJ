@@ -300,11 +300,17 @@ body {
   --el-text-color: #9d9d9d;
   --code-pre-numbering-bg-color: #141414;
   --code-bg-color: #1d1e1f;
-  --text-color: #9d9d9d;
+  --text-color: #b5bcc9;
   --submit-row-color: #172116;
 }
 .dark .el-divider__text {
     background-color: #1d1e1f!important;
+}
+.dark .el-card__header {
+    border-bottom: none;
+}
+.v-note-wrapper .v-note-panel .v-note-show .v-show-content, .v-note-wrapper .v-note-panel .v-note-show .v-show-content-html {
+  color: #606266;
 }
 .vxe-table {
   color: var(--text-color)!important;
@@ -328,6 +334,9 @@ body {
 }
 .vxe-table .vxe-table--header-wrapper .vxe-table--header-border-line, .vxe-table .vxe-table--border-line {
     border-bottom: 1px solid var(--border-color)!important;
+}
+.vxe-table .vxe-table--border-line {
+    border: 1px solid var(--border-color)!important;
 }
 .vxe-input--inner {
   border: 1px solid var(--border-color)!important;
@@ -685,7 +694,7 @@ a:hover {
   text-align: center;
 }
 .el-tag--dark {
-  border-color: var(--border-color) !important;
+  border-color: none !important;
 }
 .el-notification .el-icon-info {
     color: #409eff;

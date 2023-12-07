@@ -1941,7 +1941,7 @@ a {
 .question-intr {
   margin-top: 30px;
   border-radius: 4px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-left: 2px solid #3498db;
   background-color: var(--bg-color);
   padding: 10px;
@@ -2155,7 +2155,7 @@ a {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: var(--bg-color);
-  border: 1px dashed #e9eaec;
+  border: 1px dashed var(--border-color);
   overflow: auto;
   font-size: 1.1em;
   margin-right: 7%;

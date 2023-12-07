@@ -169,12 +169,13 @@ export default {
   margin: 0 50px 20px 50px;
 }
 .container .content pre {
+  color: var(--text-color);
   padding: 5px 10px;
   white-space: pre-wrap;
   margin-top: 15px;
   margin-bottom: 15px;
   background-color: var(--bg-color);
-  border: 1px dashed #e9eaec;
+  border: 1px dashed var(--border-color);
 }
 @media screen and (max-width: 768px) {
   .container .content {
@@ -194,6 +195,7 @@ li .title {
   font-size: 1rem;
 }
 .result li {
+  color: var(--text-color);
   list-style-type: none;
   margin-top: 8px;
 }
