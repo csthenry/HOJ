@@ -276,6 +276,7 @@ html {
   --border-color: #e8eaec;
   --row-stripe-bg-color: #fafafa;
   --nav-bg-color: rgba(255,255,255,0.7);
+  --data-nav-bg-color: hsl(211, 20%, 97%);
   --box-bg-color: #fff;
   --bg-color: #eff3f5;
   --el-text-color: #495060;
@@ -294,6 +295,7 @@ body {
 .dark {
   --row-stripe-bg-color: #141414;
   --nav-bg-color: #1d1e1f;
+  --data-nav-bg-color: #333333;
   --box-bg-color:#1d1e1f;
   --border-color: #4c4d4f;
   --bg-color: #141414;

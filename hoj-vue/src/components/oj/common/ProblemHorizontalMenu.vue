@@ -259,7 +259,7 @@ ul {
 .dataNavListItem:hover,
 .dataNavListItem.is-active {
   color: #2e95fb !important;
-  background: linear-gradient(2100deg, #f2f7fc 0%, #fefefe 100%) !important;
+  background: var(--data-nav-bg-color) !important;
   border-bottom: 2px solid #2e95fb !important;
   outline: 0 !important;
   transition: all 0.2s ease;
@@ -279,7 +279,10 @@ ul {
   border-radius: 5px;
   text-align: center;
   line-height: 35px;
-  background-color: hsl(211, 20%, 97%);
+  background-color: var(--data-nav-bg-color);
+}
+.dataNav .dataNavPrev i, .dataNav .dataNavNext i {
+  color: var(--text-color);
 }
 .dataNav .dataNavPrev:focus,
 .dataNav .dataNavNext:focus {
