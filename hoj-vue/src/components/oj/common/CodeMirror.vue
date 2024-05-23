@@ -1014,9 +1014,6 @@ export default {
 .select-row {
   margin-top: 4px;
 }
-/deep/.el-drawer__body {
-  border: 1px solid rgb(240, 240, 240);
-}
 .tj-btn {
   font-size: 13px;
   font-weight: 600;
