@@ -281,6 +281,7 @@ html {
   --bg-color: #eff3f5;
   --el-text-color: #495060;
   --text-color: #495060;
+  --scrollbar-bg-color: #797979;
   --submit-row-color: #e6ffdf;
   --code-pre-numbering-bg-color: #f1f1f1;
   --code-bg-color: #fafafa;
@@ -303,6 +304,7 @@ body {
   --code-pre-numbering-bg-color: #141414;
   --code-bg-color: #1d1e1f;
   --text-color: #b5bcc9;
+  --scrollbar-bg-color: #797979;
   --submit-row-color: #172116;
 }
 .dark .el-divider__text {
@@ -367,7 +369,7 @@ samp {
 ::-webkit-scrollbar {
   width: 10px;
   height: 12px;
-  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 20%);
+  /* -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 20%); */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -375,7 +377,7 @@ samp {
   min-height: 12px;
   min-width: 10px;
   border-radius: 8px;
-  background-color: var(--text-color);
+  background-color: var(--scrollbar-bg-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
