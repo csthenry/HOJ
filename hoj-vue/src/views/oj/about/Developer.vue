@@ -2,10 +2,10 @@
   <div class="about-card">
     <div class="intr-center">
       <paper-card type="server">
-        <h1 class="text-darken">WePlanet OnlineJudge</h1>
+        <!-- <h1 class="text-darken">WePlanet OnlineJudge</h1> -->
         <h1>
           <a href="https://github.com/csthenry/HOJ" target="_blank"
-            >Github Repository</a>
+            >Hcode OnlineJudge (HOJ)</a>
         </h1>
         <p>
           {{ $t('m.Leader_BackEnd_FrontEnd_Engineer') }} / Himit_ZH
