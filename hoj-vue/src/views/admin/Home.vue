@@ -633,8 +633,8 @@ export default {
   cursor: pointer;
 }
 .vertical_menu .logo img {
-  background-color: #fff;
-  border: 3px solid #fff;
+  /* background-color: #fff;
+  border: 3px solid #fff; */
   width: 150px;
   height: 150px;
 }
@@ -663,12 +663,10 @@ img {
   font-weight: 400;
   height: 100%;
   -webkit-font-smoothing: antialiased;
-  background-color: #eff3f5;
   overflow-y: auto;
 }
 .breadcrumb-container {
   padding: 17px;
-  background-color: #fff;
 }
 * {
   box-sizing: border-box;
@@ -680,7 +678,6 @@ img {
   padding-right: 30px;
   line-height: 50px;
   height: 50px;
-  background: #f9fafc;
 }
 .footer {
   margin: 15px;
@@ -710,13 +707,13 @@ img {
   .content-app {
     margin-top: 10px;
     margin-right: 10px;
-    margin-left: 220px;
+    margin-left: 240px;
   }
   .vertical_menu {
-    width: 210px;
+    width: 230px;
   }
   #header {
-    margin-left: 210px;
+    margin-left: 230px;
   }
 }
 

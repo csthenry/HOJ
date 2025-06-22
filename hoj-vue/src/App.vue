@@ -389,7 +389,6 @@ samp {
 }
 
 #admin-content {
-  background-color: #1e9fff;
   position: absolute;
   top: 0;
   bottom: 0;
