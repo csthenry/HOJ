@@ -32,9 +32,9 @@
               <el-menu-item index="/introduction">{{
                 $t('m.NavBar_Introduction')
               }}</el-menu-item>
-              <el-menu-item index="/developer">{{
+              <!-- <el-menu-item index="/developer">{{
                 $t('m.NavBar_Developer')
-              }}</el-menu-item>
+              }}</el-menu-item> -->
             </el-submenu>
           </template>
           <template v-else-if="mode == 'training'">
@@ -395,12 +395,6 @@
                 active-class="mobile-menu-active">
                 <mu-list-item-title>{{
                   $t('m.NavBar_Introduction')
-                }}</mu-list-item-title>
-              </mu-list-item>
-              <mu-list-item button :ripple="false" slot="nested" to="/developer" @click="opendrawer = !opendrawer"
-                active-class="mobile-menu-active">
-                <mu-list-item-title>{{
-                  $t('m.NavBar_Developer')
                 }}</mu-list-item-title>
               </mu-list-item>
             </mu-list-item>
